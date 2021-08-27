@@ -15,8 +15,18 @@ class Game {
 		//TODO: player init
 	}
 
-	public void doTurn(Piece piece, char direction) {
-		piece.movePiece(direction);
+	/**
+	 * Sets up a new game (piece selection, color, etc).
+	 */
+	public void newGame() {
+
+	}
+
+	/**
+	 * Executes a turn by moving a piece in a given direction.
+	 */
+	public boolean doTurn(Piece piece, char direction) {
+		return piece.movePiece(direction);
 	}
 
 	public void EndGame() {
