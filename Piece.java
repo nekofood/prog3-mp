@@ -131,6 +131,7 @@ public class Piece extends Tile {
   * Captures the piece, placing it in -1, -1 and updating its captured status.
   */
   public void getCaptured() {
+    //TODO: replace this with something saner
     x = -1;
     y = -1;
     isCaptured = true;
@@ -158,6 +159,10 @@ public class Piece extends Tile {
       }
     }
     return null;
+  }
+
+  public String toString() {
+	return this.getType() + " at " + this.getX() + ", " + this.getY();
   }
 
   private int rank;
