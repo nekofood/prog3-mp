@@ -22,10 +22,13 @@ public class LionTigerPiece extends Piece {
   * @param  direction The desired direction to move in (N/S/E/W).
   * @return false if movement fails, true otherwise.
   */
-  public boolean movePiece(char direction, Piece[] pieces, Tile[] terrain) {
+  public boolean movePiece(char direction) {
     //all of this copy-pasted wholesale from the Piece superclass
     int checkX = 0;
     int checkY = 0;
+    Piece[] pieces = this.getBoard().getPieces();
+    Tile[] terrain = this.getBoard().getTerrain();
+	    
     switch (direction) {
       case 'N':
         checkY = 1;
@@ -68,8 +71,8 @@ public class LionTigerPiece extends Piece {
         }
 
         if (terrain[i].getType().matches("Den") && terrain[i].getOwner() ==  this.getOwner()) {
-        collision = true;
-        }
+        	return false;
+	}
 
       }
     }
