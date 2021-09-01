@@ -88,17 +88,23 @@ public class MousePiece extends Piece {
   }
 
  /**
-  * Checks if this piece can capture the piece it is moving onto. Mice cannot capture mice that already are on water.
+  * Checks if this piece can capture the piece it is moving onto. Mice can capture elephants, but cannot capture pieces on land while in the river (and vice versa).
   * @param target the piece to compare ranks against 
   * @return true if capturing fails, false otherwise.
   */
   public boolean capturePiece(Piece target) {
     if (target.getOwner() == this.getOwner())
       return false;
-    if (target.getTileUnder().getType().equals("Water"));
+    //prevent capturing land -> water
+    if (target.getTileUnder() != null && target.getTileUnder().getType().equals("Water") && this.getTileUnder() == null);
     	return false;
-    if (target.getTileUnder().getType().equals("Trap") && target.getTileUnder().getOwner() == this.getOwner());
+    //prevent capturing water -> land
+    if (target.getTileUnder() == null && this.getTileUnder().getType().equals("Water"))
+	return false;
+    if (target.getTileUnder() != null && target.getTileUnder().getType().equals("Trap") && target.getTileUnder().getOwner() == this.getOwner());
     	return true;
+    if (target.getType().equals("Elephant"))
+	return true;
     return this.rank >= target.rank;
   }
 
