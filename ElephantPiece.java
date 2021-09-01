@@ -23,7 +23,7 @@ public class ElephantPiece extends Piece {
       			return false;
 		if (target.getType() == "Mouse")
 			return false;
-    		if (target.getTileUnder().getType().equals("Trap"));
+    		if (target.getTileUnder().getType().equals("Trap") && target.getTileUnder().getOwner() == this.getOwner());
     			return true;
     		return this.rank >= target.rank;
   	}

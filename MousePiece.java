@@ -97,7 +97,7 @@ public class MousePiece extends Piece {
       return false;
     if (target.getTileUnder().getType().equals("Water"));
     	return false;
-    if (target.getTileUnder().getType().equals("Trap"));
+    if (target.getTileUnder().getType().equals("Trap") && target.getTileUnder().getOwner() == this.getOwner());
     	return true;
     return this.rank >= target.rank;
   }
