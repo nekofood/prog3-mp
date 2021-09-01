@@ -26,7 +26,7 @@ public class LionTigerPiece extends Piece {
     //all of this copy-pasted wholesale from the Piece superclass
     int checkX = 0;
     int checkY = 0;
-    Piece[] pieces = this.getBoard().getPieces();
+    ArrayList<Piece> pieces = this.getBoard().getPieces();
     Tile[] terrain = this.getBoard().getTerrain();
 	    
     switch (direction) {
@@ -59,10 +59,10 @@ public class LionTigerPiece extends Piece {
       if (terrain[i].getX() == (this.getX() + checkX) && terrain[i].getY() == (this.getY() + checkY)) {
         if (terrain[i].getType().matches("Water")) {
           if (checkX != 0) {
-            checkX = waterCheck(checkX, checkY, terrain);
+            checkX = waterCheck(checkX, checkY);
           }
           if (checkY != 0) {
-            checkY = waterCheck(checkX, checkY, terrain);
+            checkY = waterCheck(checkX, checkY);
           }
         }
 
@@ -79,7 +79,7 @@ public class LionTigerPiece extends Piece {
 
     //iterate through entire piece array for piece collision checking
     for (int i = 0; i < pieces.length; i++) {
-      if (pieces[i].getX() == (this.getX() + checkX) && pieces[i].getY() == (this.getY() + checkY)) {
+      if (pieces.get(i).getX() == (this.getX() + checkX) && pieces.get(i).getY() == (this.getY() + checkY)) {
         collision = true;
         collisionIndex = i;
       }
@@ -89,8 +89,8 @@ public class LionTigerPiece extends Piece {
     if (collision && capturePiece(pieces[collisionIndex])) {
       this.x += checkX;
       this.y += checkY;
-      pieces[collisionIndex].getCaptured();
-      System.out.println("Captured an enemy " + pieces[collisionIndex].getType());
+      pieces.get(collisionIndex).getCaptured();
+      System.out.println("Captured an enemy " + pieces.get(collisionIndex).getType());
       return true;
     } else {
       return false;
@@ -112,12 +112,18 @@ public class LionTigerPiece extends Piece {
   * @param terrain the array of terrain tiles
   * @return the amount of water tiles to jump, 0 if the movement is invalid.
   */
-  public int waterCheck(int directionX, int directionY, Tile[] terrain) {
+  public int waterCheck(int directionX, int directionY) {
     //search for a water tile in the desired direction until no more water tile
     //while checking if there's a mouse along the way
     //(for the sake of my sanity, i won't do mouse check until MC02)
     int movementY = directionY;
     int movementX = directionX;
+    Tile[] terrain = this.getBoard().getTerrain();
+    Piece[] pieces = this.getBoard().getPieces();
+    MousePiece mouse1;
+    MousePiece mouse2;
+    //weirdchamp mouse check method: get the mice from Board
+    for ()
 
     boolean doneChecking = false;
 

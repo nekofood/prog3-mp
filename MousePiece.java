@@ -7,14 +7,15 @@ public class MousePiece extends Piece {
   /**
   * Moves the piece in one direction. Mice can move onto water.
   * @param  direction The desired direction to move in (N/S/E/W).
-  * @param  pieces  The array of all game pieces in play.
-  * @param  terrain The array of all terrain.
   * @return false if movement fails, true otherwise.
   */
   @Override
-  public boolean movePiece(char direction, Piece[] pieces, Tile[] terrain) {
+  public boolean movePiece(char direction) {
     int checkX = 0;
     int checkY = 0;
+
+    ArrayList<Piece> pieces = this.getBoard().getPieces();
+    Tile[] terrain = this.getBoard().getTerrain();
 
     switch (direction) {
       case 'N':
@@ -40,7 +41,7 @@ public class MousePiece extends Piece {
 
     //iterate through entire piece array for piece collision checking
     for (int i = 0; i < pieces.length; i++) {
-      if (pieces[i].getX() == (this.getX() + checkX) && pieces[i].getY() == (this.getY() + checkY)) {
+      if (pieces.get(i).getX() == (this.getX() + checkX) && pieces.get(i).getY() == (this.getY() + checkY)) {
         collision = true;
         collisionIndex = i;
       }
@@ -54,7 +55,6 @@ public class MousePiece extends Piece {
           terrain[i].setType("DenCaptured");
         }
 
-        //TODO: same as above
         if (terrain[i].getType().matches("Den") && terrain[i].getOwner() == this.getOwner()) {
           return false;
         }
