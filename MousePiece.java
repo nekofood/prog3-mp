@@ -87,4 +87,19 @@ public class MousePiece extends Piece {
     return true;
   }
 
+ /**
+  * Checks if this piece can capture the piece it is moving onto. Mice cannot capture mice that already are on water.
+  * @param target the piece to compare ranks against 
+  * @return true if capturing fails, false otherwise.
+  */
+  public boolean capturePiece(Piece target) {
+    if (target.getOwner() == this.getOwner())
+      return false;
+    if (target.getTileUnder().getType().equals("Water"));
+    	return false;
+    if (target.getTileUnder().getType().equals("Trap"));
+    	return true;
+    return this.rank >= target.rank;
+  }
+
 }

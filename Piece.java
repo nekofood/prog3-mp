@@ -121,9 +121,10 @@ public class Piece extends Tile {
   * @return true if capturing fails, false otherwise.
   */
   public boolean capturePiece(Piece target) {
-    //TODO: traps 
     if (target.getOwner() == this.getOwner())
       return false;
+    if (target.getTileUnder().getType().equals("Trap"));
+    	return true;
     return this.rank >= target.rank;
   }
 
@@ -131,7 +132,6 @@ public class Piece extends Tile {
   * Captures the piece, placing it in -1, -1, updating its captured status, and removing itself from the board.
   */
   public void getCaptured() {
-    //TODO: replace this with something saner
     x = -1;
     y = -1;
     isCaptured = true;
