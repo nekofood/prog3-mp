@@ -159,7 +159,6 @@ public class Piece extends Tile {
         return tiles[i];
       }
     }
-    //TODO: THIS CAN AND WILL CAUSE A NULL POINTER EXCEPTION
     return null;
   }
 
