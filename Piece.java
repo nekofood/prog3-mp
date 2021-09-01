@@ -31,7 +31,7 @@ public class Piece extends Tile {
   * @return false if movement fails, true otherwise.
   */
   public boolean movePiece(char direction) {
-    Piece[] pieces = this.getBoard().getPieces();
+    ArrayList<Pieces> pieces = this.getBoard().getPieces();
     Tile[] terrain = this.getBoard().getTerrain();
     int checkX = 0;
     int checkY = 0;
@@ -60,7 +60,7 @@ public class Piece extends Tile {
 
     //iterate through entire piece array for piece collision checking
     for (int i = 0; i < pieces.length; i++) {
-      if (pieces[i].getX() == (this.getX() + checkX) && pieces[i].getY() == (this.getY() + checkY)) {
+      if (pieces.get(i).getX() == (this.getX() + checkX) && pieces.get(i).getY() == (this.getY() + checkY)) {
         collision = true;
         collisionIndex = i;
       }
@@ -94,8 +94,8 @@ public class Piece extends Tile {
     if (collision && capturePiece(pieces[collisionIndex])) {
       this.x += checkX;
       this.y += checkY;
-      pieces[collisionIndex].getCaptured();
-      System.out.println("Captured an enemy " + pieces[collisionIndex].getType());
+      pieces.get(collisionIndex).getCaptured();
+      System.out.println("Captured an enemy " + pieces.get(collisionIndex).getType());
       return true;
     }
 
@@ -128,13 +128,14 @@ public class Piece extends Tile {
   }
 
   /**
-  * Captures the piece, placing it in -1, -1 and updating its captured status.
+  * Captures the piece, placing it in -1, -1, updating its captured status, and removing itself from the board.
   */
   public void getCaptured() {
     //TODO: replace this with something saner
     x = -1;
     y = -1;
     isCaptured = true;
+    this.getBoard().removePiece(this);
     return;
   }
 
