@@ -115,15 +115,26 @@ public class LionTigerPiece extends Piece {
   public int waterCheck(int directionX, int directionY) {
     //search for a water tile in the desired direction until no more water tile
     //while checking if there's a mouse along the way
-    //(for the sake of my sanity, i won't do mouse check until MC02)
     int movementY = directionY;
     int movementX = directionX;
     Tile[] terrain = this.getBoard().getTerrain();
-    Piece[] pieces = this.getBoard().getPieces();
+    ArrayList<Piece> pieces = this.getBoard().getPieces();
     MousePiece mouse1;
     MousePiece mouse2;
+    int[][] mousePositions[2][2];
+
     //weirdchamp mouse check method: get the mice from Board
-    for ()
+    for (int j = 0; j < pieces.size(); j++) {
+        if (pieces.get(j).getType().equals("Mouse") && mouse1 == null)
+		mouse1 = pieces.get(j);
+	else if (pieces.get(j).getType().equals("Mouse"))
+		mouse2 = pieces.get(j);
+    }
+
+    mousePositions = {
+	    {mouse1.getX(), mouse1.getY()},
+	    {mouse2.getX(), mouse2.getY()}
+    };
 
     boolean doneChecking = false;
 
@@ -133,12 +144,18 @@ public class LionTigerPiece extends Piece {
         if (terrain[i].getType().equals("Water")) {
           //checking along the x-axis
           if (movementX != 0 && this.getX() + movementX == terrain[i].getX()) {
+	    //if there is a maus along the way then return 0
+	    if (this.getX() + movementX == mousePositions[0][0] || this.getX() + movementX == mousePositions[1][0])
+		    return 0;
             movementX += directionX;
             doneChecking = false;
             break;
           }
           //checking along the y-axis
           if (movementY != 0 && this.getY() + movementY == terrain[i].getY()) {
+	    //if theres mouse return 0
+	    if (this.getY() + movementY == mousePositions[0][1] || this.getY() + movementY == mousePositions[1][1])
+		    return 0;
             movementY += directionY;
             doneChecking = false;
             break;
