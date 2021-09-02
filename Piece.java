@@ -77,11 +77,6 @@ public class Piece extends Tile {
           //if it walks into water it should be invalid anyway
           return false;
         }
-
-        if (terrain[i].getType().matches("Den") && this.getOwner() != terrain[i].getOwner()) {
-          terrain[i].setType("DenCaptured");
-        }
-
         //TODO: same as above
         if (terrain[i].getType().matches("Den") && terrain[i].getOwner() == this.getOwner()) {
           return false;

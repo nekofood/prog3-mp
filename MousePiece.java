@@ -51,9 +51,6 @@ public class MousePiece extends Piece {
     //mouse can move onto water
     for (int i = 0; i < terrain.length; i++) {
       if (terrain[i].getX() == (this.getX() + checkX) && terrain[i].getY() == (this.getY() + checkY)) {
-        if (terrain[i].getType().matches("Den") && this.getOwner() != terrain[i].getOwner()) {
-          terrain[i].setType("DenCaptured");
-        }
 
         if (terrain[i].getType().matches("Den") && terrain[i].getOwner() == this.getOwner()) {
           return false;

@@ -66,9 +66,6 @@ public class LionTigerPiece extends Piece {
           }
         }
 
-        if (terrain[i].getType().matches("Den") && this.getOwner() != terrain[i].getOwner()) {
-          terrain[i].setType("DenCaptured");
-        }
 
         if (terrain[i].getType().matches("Den") && terrain[i].getOwner() ==  this.getOwner()) {
         	return false;
