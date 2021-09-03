@@ -18,8 +18,11 @@ class Game {
 
 	/**
 	 * Sets up a new game (piece selection, color, etc).
+	 * @return the side that will play first (1 if left, 2 if right)
 	 */
-	public void newGame() {
+	public int newGame() {
+		int side;
+
 		bag.shuffleBag();
 		//TODO: receive input from controller
 		
@@ -30,6 +33,10 @@ class Game {
 			p2piece = bag.drawPiece();
 
 		//set first player to whoever drew the higher piece
+		
+		/*Player n, pick a side, etc etc*/
+
+		return side;
 		
 	}
 
