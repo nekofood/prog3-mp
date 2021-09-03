@@ -6,7 +6,6 @@ class Player {
 		this.number = number;
 		this.color = color;
 		pieces = new ArrayList<>();
-		//TODO: init pieces
 	}
 
 
