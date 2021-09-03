@@ -1,22 +1,35 @@
-import java.util.Random;
+import java.util.Collections;
 /**
  * This class represents a bag for shuffling pieces.
  */
 class Bag {
 	Bag(ArrayList<Piece> boardPieces) {
+		pieces = new ArrayList<>();
 		for (int i = 0; i < pieces.size(); i++) {
-			piece[i] = boardPieces.get(i)
+			pieces.add(boardPieces.get(i))
 		}
+
 	}
 
 	/**
-	 * Draws a random piece from the bag.
+	 * Shuffles the order of the pieces ArrayList.
 	 */
-	public Piece drawPiece() {
-		Random rand = new Random();
-		return pieces[rand.nextInt(16)];	
+	public void shuffleBag() {
+		Collections.shuffle(pieces);
 	}
 
-	private Piece[] pieces[16];
+	/**
+	 * Draws a piece from the bag.
+	 * @return The first piece in the list, null if empty
+	 */
+	public Piece drawPiece() {
+		if (pieces.size() == 0)
+			return null;
+		Piece piece =  pieces.get(0);
+		pieces.remove(0);
+		return piece;
+	}
+
+	private ArrayList<Piece> pieces; 
 	
 }
