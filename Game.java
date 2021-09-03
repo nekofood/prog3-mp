@@ -35,6 +35,7 @@ class Game {
 		//set first player to whoever drew the higher piece
 		
 		/*Player n, pick a side, etc etc*/
+		//TODO: assign pieces to the players
 
 		return side;
 		
@@ -49,5 +50,13 @@ class Game {
 
 	public void endGame() {
 		//zzz
+	}
+
+	public Player getPlayer1() {
+		return player1;
+	}
+
+	public Player getPlayer2() {
+		return player2;
 	}
 }
