@@ -5,20 +5,16 @@ class Player {
 	Player(int number, String color) {
 		this.number = number;
 		this.color = color;
+		pieces = new ArrayList<>();
 		//TODO: init pieces
 	}
 
 
 	/**
-	 * Initializes the player's pieces.
-	 * @param side which side the player is on (0 for left, 1 for right)
+	 * Add's a piece to the player's piece list.
 	 */
-	public void initializePieces(int side) {
-		if (side == 0) {
-			//this should only add the REFERENCES to pieces that are initialized in the Board class
-			//walang new new dito
-			//TODO after finishing Board class
-		}
+	public void initializePiece(Piece piece) {
+		pieces.add(piece);
 	}
 
 	public Piece[] getPieces() {
@@ -37,7 +33,7 @@ class Player {
 		return number;
 	}
 
-	private Piece[] pieces;
+	private ArrayList<Piece> pieces;
 	private Tile[] denTiles;
 	private int number;
 	private String color;

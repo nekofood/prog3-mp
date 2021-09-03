@@ -5,12 +5,14 @@
 
 class Game {
 	private Board board;
+	private Bag bag;
 	private Player player1;
 	private Player player2;
 	private int turn;
 
 	Game() {
 		board = new Board();
+		bag = new Bag(board.getPieces());
 		turn = 0;
 		//TODO: player init
 	}
@@ -19,7 +21,7 @@ class Game {
 	 * Sets up a new game (piece selection, color, etc).
 	 */
 	public void newGame() {
-
+		bag.shuffleBag();
 	}
 
 	/**
@@ -29,7 +31,7 @@ class Game {
 		return piece.movePiece(direction);
 	}
 
-	public void EndGame() {
+	public void endGame() {
 		//zzz
 	}
 }
