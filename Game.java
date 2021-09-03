@@ -14,7 +14,6 @@ class Game {
 		board = new Board();
 		bag = new Bag(board.getPieces());
 		turn = 0;
-		//TODO: player init
 	}
 
 	/**
@@ -22,6 +21,16 @@ class Game {
 	 */
 	public void newGame() {
 		bag.shuffleBag();
+		//TODO: receive input from controller
+		
+		Piece p1piece = bag.drawPiece();
+		Piece p2piece = bag.drawPiece();
+		//bandaid fix to prevent both players from drawing the same piece type
+		if (p1piece.getType().equals(p2.piece.getType()))
+			p2piece = bag.drawPiece();
+
+		//set first player to whoever drew the higher piece
+		
 	}
 
 	/**
