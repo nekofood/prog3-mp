@@ -11,6 +11,10 @@ class Game {
 	private int turn;
 
 	Game() {
+		board = new Board();
+		bag = new Bag(board.getPieces());
+		turn = 0;
+		//todo: player init
 	}
 
 	/**
@@ -18,11 +22,6 @@ class Game {
 	 * @return the side that will play first (1 if left, 2 if right)
 	 */
 	public int newGame() {
-		board = new Board();
-		bag = new Bag(board.getPieces());
-		turn = 0;
-		//todo: player init
-		
 		int side;
 
 		bag.shuffleBag();
