@@ -57,6 +57,9 @@ class Board {
 		pieces.add(new ElephantPiece(7, 1, 2, this));
 	}
 
+	/**
+	 * Removes a piece from the board.
+	 */
 	public void removePiece(Piece piece) {
 		pieces.remove(piece);
 	}

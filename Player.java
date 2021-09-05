@@ -16,8 +16,20 @@ class Player {
 		pieces.add(piece);
 	}
 
-	public Piece[] getPieces() {
+	public ArrayList<Piece> getPieces() {
 		return pieces;
+	}
+
+	/**
+	 * Returns the amount of living pieces the player has left.
+	 */
+	public int getLivePieces() {
+		int alive = 0;
+		for (int i = 0; i < pieces.size(); i++) {
+			if (!pieces.get(i).getCaptureStatus)
+				++alive;
+		}
+		return alive;
 	}
 
 	public Tile[] getTiles() {

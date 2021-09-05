@@ -26,7 +26,7 @@ class Game {
 
 		bag.shuffleBag();
 		//TODO: how to receive input from controller? (might have to split this newGame function up)
-		
+
 		Piece p1piece = bag.drawPiece();
 		Piece p2piece = bag.drawPiece();
 		//bandaid fix to prevent both players from drawing the same piece type
@@ -34,12 +34,12 @@ class Game {
 			p2piece = bag.drawPiece();
 
 		//set first player to whoever drew the higher piece
-		
+
 		/*Player n, pick a color, etc etc*/
 		//TODO: assign pieces to the players
 
 		return side;
-		
+
 	}
 
 	/**
@@ -47,6 +47,18 @@ class Game {
 	 */
 	public boolean doTurn(Piece piece, char direction) {
 		return piece.movePiece(direction);
+	}
+
+	/**
+	 * Checks win condition for "annihilation" victory.
+	 * @return no. of winning player, 0 otherwise
+	 */
+	public int checkEnd() {
+		if (player1.getLivePieces() == 0)
+			return 2;
+		if (player2.getLivePieces() == 0)
+			return 1;
+		return 0;
 	}
 
 	public void endGame() {
