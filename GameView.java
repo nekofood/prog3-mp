@@ -143,5 +143,14 @@ class GameView extends JFrame {
     	{
         	turn.setText(player.getColor()+ "'s Turn");
     	}
+	
+	/**
+	 * Sets the label to the winner
+	 * @param player the player who wins
+	 */
+	public void setWinnerInfo(Player player)
+	{
+		turn.setText(player.getColor() + " Wins!");
+	}
 
 }
