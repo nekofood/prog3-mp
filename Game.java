@@ -1,5 +1,5 @@
 /**
- * This class represents a match to be played by two players.
+ * This class represents a single game of Animal Chess.
  *
  */
 
@@ -64,13 +64,6 @@ class Game {
 
 	public void endGame() {
 		//zzz
-	}
-
-	/**
-	 * Resets the board to its default state. By making a new fucking board lol.
-	 */
-	public void resetGame() {
-
 	}
 
 	public Player getPlayer1() {

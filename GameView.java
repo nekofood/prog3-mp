@@ -2,7 +2,7 @@ import java.swing.*;
 import java.awt.event.*;
 
 class GameView extends JFrame {
-	JButton[][] gameBoard;
+	private JButton[][] gameBoard;
 
 	GameView() {
 		gameBoard = new JButton[7][9];
