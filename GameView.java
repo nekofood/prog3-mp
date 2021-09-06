@@ -25,6 +25,9 @@ class GameView extends JFrame {
 	 * Initializes the icons on each button.
 	 */
 	public void initIcons() {
+		
+		initRiver();
+		initDenTraps();
 
 	}
 
@@ -47,5 +50,35 @@ class GameView extends JFrame {
 	public void addButtonListener(JButton b, ActionListener al) {
 		b.addActionListener(al);
 	}
+	
+	private void initRiver()
+    	{  
+        	for (int i = 5; i>=4; i--) {
+            		for (int j = 3; j<=5;j++) {
+                		gameboard[i][j].add(new JLabel(new ImageIcon("River.png")));
+            		}
+        	}
+
+        	for (int i = 2; i>=1; i--) {
+            		for (int j = 3; j<=5;j++) {
+                		gameboard[i][j].add(new JLabel(new ImageIcon("River.png")));
+            		}
+        	}
+    	}
+	
+	private void initDenTraps()
+    	{
+        	//left side
+        	gameboard[2][0].add(new JLabel(new ImageIcon(/*"Some trap pic"*/)));
+        	gameboard[3][1].add(new JLabel(new ImageIcon(/*"Some trap pic"*/)));
+        	gameboard[4][0].add(new JLabel(new ImageIcon(/*"Some trap pic"*/)));
+        	gameboard[3][0].add(new JLabel(new ImageIcon(/*"Some den pic"*/)));
+
+        	//right side
+        	gameboard[2][8].add(new JLabel(new ImageIcon(/*"Some trap pic"*/)));
+        	gameboard[3][7].add(new JLabel(new ImageIcon(/*"Some trap pic"*/)));
+        	gameboard[4][8].add(new JLabel(new ImageIcon(/*"Some trap pic"*/)));
+        	gameboard[3][8].add(new JLabel(new ImageIcon(/*"Some den pic"*/)));
+    	}
 
 }
