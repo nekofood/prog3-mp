@@ -7,4 +7,8 @@ class GameController() {
 		view = v;
 		model = g;
 	}
+
+	class BoardListener implements ActionListener {
+
+	}
 }

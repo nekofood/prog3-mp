@@ -11,6 +11,10 @@ class Game {
 	private int turn;
 	private int whoseTurn;
 
+	/**
+	 * This constructor creates a new game instance with a board and bag.
+	 * It also sets the turn counter to 0.
+	 */
 	Game() {
 		board = new Board();
 		bag = new Bag(board.getPieces());
@@ -93,10 +97,6 @@ class Game {
 		if (this.board.checkEnd != 0)
 			return checkEnd;
 		return 0;
-	}
-
-	public void endGame() {
-		//zzz
 	}
 
 	public Player getPlayer1() {
