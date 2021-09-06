@@ -40,8 +40,8 @@ class GameView extends JFrame {
 	/**
 	 * Transfers the visuals from one square to another.
 	 * The source square is cleared in the process.
-	 * @param src the source square
-	 * @param src the destination square
+	 * @param src the source square JButton
+	 * @param destination the destination square JButton
 	 */
 	public void movePiece(JButton src, JButton destination) {
 		destination.setIcon(src.getIcon());
@@ -56,12 +56,12 @@ class GameView extends JFrame {
 	public void addButtonListener(JButton b, ActionListener al) {
 		b.addActionListener(al);
 	}
-	
+
 	private void initRiver()
     	{
         	for (int i = 5; i>=4; i--) {
             		for (int j = 3; j<=5;j++) {
-                		gameBoard[i][j].setIcon(new ImageIcon("River.png"));
+                		gameBoard[i][j].setIcon(new ImageIcon("img/River.png"));
             		}
         	}
 
@@ -75,16 +75,16 @@ class GameView extends JFrame {
 	private void initDenTraps()
     	{
         	//left side
-        	gameBoard[2][0].setIcon(new ImageIcon(/*"Some trap pic"*/));
-        	gameBoard[3][1].setIcon(new ImageIcon(/*"Some trap pic"*/));
-        	gameBoard[4][0].setIcon(new ImageIcon(/*"Some trap pic"*/));
-        	gameBoard[3][0].setIcon(new ImageIcon(/*"Some den pic"*/));
+        	gameBoard[2][0].setIcon(new ImageIcon("img/Trap.png"));
+        	gameBoard[3][1].setIcon(new ImageIcon("img/Trap.png"));
+        	gameBoard[4][0].setIcon(new ImageIcon("img/Trap.png"));
+        	gameBoard[3][0].setIcon(new ImageIcon("img/Den.png"));
 
         	//right side
-        	gameBoard[2][8].setIcon(new ImageIcon(/*"Some trap pic"*/));
-        	gameBoard[3][7].setIcon(new ImageIcon(/*"Some trap pic"*/));
-        	gameBoard[4][8].setIcon(new ImageIcon(/*"Some trap pic"*/));
-        	gameBoard[3][8].setIcon(new ImageIcon(/*"Some den pic"*/));
+        	gameBoard[2][8].setIcon(new ImageIcon("img/Trap.png"));
+        	gameBoard[3][7].setIcon(new ImageIcon("img/Trap.png"));
+        	gameBoard[4][8].setIcon(new ImageIcon("img/Trap.png"));
+        	gameBoard[3][8].setIcon(new ImageIcon("img/Den.png"));
     	}
 
 }
