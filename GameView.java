@@ -9,15 +9,19 @@ class GameView extends JFrame {
 
 		this.setTitle("Animal Chess");
 		this.setSize(720, 560); //piece icons = 80px
-		this.setLayout(new GridLayout(7, 9));
+		this.setLayout(new BorderLayout());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+		
+		JPanel center = new JPanel(new GridLayout(7, 9));
 		for (int i = 0; i < 7; i++) {
 			for (int j = 0; j < 9; j++) {
 				gameBoard[i][j] = new JButton();
+				gameBoard[i][j].setBackground(Color.white);
+                		center.add(gameBoard[i][j]);
 			}
 		}
-
+		add(center, BorderLayout.CENTER);
+        	initIcons();
 		this.setVisible(true);
 	}
 
