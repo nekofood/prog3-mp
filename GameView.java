@@ -13,7 +13,7 @@ class GameView extends JFrame {
 		this.setSize(720, 560); //piece icons = 80px
 		this.setLayout(new BorderLayout());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+
 		JPanel center = new JPanel(new GridLayout(7, 9));
 		for (int i = 0; i < 7; i++) {
 			for (int j = 0; j < 9; j++) {
@@ -31,7 +31,7 @@ class GameView extends JFrame {
 	 * Initializes the icons on each button.
 	 */
 	public void initIcons() {
-		
+
 		initRiver();
 		initDenTraps();
 
@@ -58,7 +58,7 @@ class GameView extends JFrame {
 	}
 	
 	private void initRiver()
-    	{  
+    	{
         	for (int i = 5; i>=4; i--) {
             		for (int j = 3; j<=5;j++) {
                 		gameBoard[i][j].setIcon(new ImageIcon("River.png"));
@@ -71,7 +71,7 @@ class GameView extends JFrame {
             		}
         	}
     	}
-	
+
 	private void initDenTraps()
     	{
         	//left side
