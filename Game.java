@@ -9,6 +9,7 @@ class Game {
 	private Player player1;
 	private Player player2;
 	private int turn;
+	private int whoseTurn;
 
 	Game() {
 		board = new Board();
@@ -19,9 +20,8 @@ class Game {
 
 	/**
 	 * Sets up a new game (piece selection, color, etc).
-	 * @return the side that will play first (1 if left, 2 if right)
 	 */
-	public int newGame() {
+	public void newGame() {
 		int side;
 
 		bag.shuffleBag();
@@ -38,7 +38,6 @@ class Game {
 		/*Player n, pick a color, etc etc*/
 		//TODO: assign pieces to the players
 
-		return side;
 
 	}
 
@@ -50,7 +49,7 @@ class Game {
 	}
 
 	/**
-	 * Checks win condition for "annihilation" victory.
+	 * Checks win condition.
 	 * @return no. of winning player, 0 otherwise
 	 */
 	public int checkEnd() {
@@ -58,6 +57,8 @@ class Game {
 			return 2;
 		if (player2.getLivePieces() == 0)
 			return 1;
+		if (this.board.checkEnd != 0)
+			return checkEnd;
 		return 0;
 	}
 
