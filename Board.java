@@ -83,6 +83,17 @@ class Board {
 			return 0;
 	}
 
+	/**
+	 * Returns the piece at a certain board x,y coordinate.
+	 */
+	public Piece getPieceAt(int x, int y) {
+		//this is what i get for not using a 2D array
+		for (int i=0; i < pieces.size(); i++) {
+			if (pieces.get(i).getX() == x && pieces.get(i).getY() == y)
+				return pieces.get(i);
+		}
+	}
+
 	public ArrayList<Piece> getPieces() {
 		return pieces;
 	}

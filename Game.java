@@ -85,6 +85,14 @@ class Game {
 		return piece.movePiece(direction);
 	}
 
+	public void advanceTurn() {
+		++turn;
+		if (whoseTurn == 1)
+			whoseTurn = 2;
+		if (whoseTurn == 2)
+			whoseTurn = 1;
+	}
+
 	/**
 	 * Checks win condition.
 	 * @return no. of winning player, 0 otherwise
