@@ -15,17 +15,15 @@ class Game {
 		board = new Board();
 		bag = new Bag(board.getPieces());
 		turn = 0;
-		//todo: player init
+		whoseTurn = 0;
 	}
 
 	/**
-	 * Sets up a new game (piece selection, color, etc).
+	 * Executes the "draw animal piece and select color" section of starting a new game.
+	 * @return the player who will select their color and move first
 	 */
-	public void newGame() {
-		int side;
-
+	public int drawAnimalPiece() {
 		bag.shuffleBag();
-		//TODO: how to receive input from controller? (might have to split this newGame function up)
 
 		Piece p1piece = bag.drawPiece();
 		Piece p2piece = bag.drawPiece();
@@ -33,12 +31,47 @@ class Game {
 		if (p1piece.getType().equals(p2.piece.getType()))
 			p2piece = bag.drawPiece();
 
+		System.out.println("Bag pieces drawn");
+
 		//set first player to whoever drew the higher piece
+		if (p1piece.getRank() > p2piece.getRank()) {
+			whoseTurn = 1;
+			return 1;
+		}
+		whoseTurn = 2;
+		return 2;
+		//pass control back to the controller
+	}
 
-		/*Player n, pick a color, etc etc*/
-		//TODO: assign pieces to the players
+	/**
+	 * Adds the board pieces to each player's array.
+	 * @param firstSide the side chosen by the first player
+	 */
+	public void initializePlayers(int firstSide) {
+		//USE WHOSETURN!!!
+		Player firstplayer;
+		Player secondplayer;
+		if (whoseTurn == 1) {
+			firstplayer = player1;
+			secondplayer = player2;
+		}
+		if (whoseTurn == 2) {
+			firstplayer = player2;
+			secondplayer = player1;
+		}
 
-
+		if (firstSide = 1) {
+			for (int i = 0; i < 8; i++)
+				firstplayer.initializePiece(board.getPieces().get(i));
+			for (i = 8; i < 16; i++)
+				secondplayer.initializePiece(board.getPieces().get(i));
+		}
+		if (firstSide = 2) {
+			for (int i = 0; i < 8; i++)
+				secondplayer.initializePiece(board.getPieces().get(i));
+			for (i = 8; i < 16; i++)
+				firstplayer.initializePiece(board.getPieces().get(i));
+		}
 	}
 
 	/**

@@ -83,7 +83,7 @@ class Board {
 			return 0;
 	}
 
-	public Piece[] getBoard() {
+	public ArrayList<Piece> getPieces() {
 		return pieces;
 	}
 
