@@ -73,16 +73,16 @@ class GameView extends JFrame {
 	private void initDenTraps()
     	{
         	//left side
-        	gameBoard[2][0].setIcon(new ImageIcon(/*"Some trap pic"*/)));
-        	gameBoard[3][1].setIcon(new ImageIcon(/*"Some trap pic"*/)));
-        	gameBoard[4][0].setIcon(new ImageIcon(/*"Some trap pic"*/)));
-        	gameBoard[3][0].setIcon(new ImageIcon(/*"Some den pic"*/)));
+        	gameBoard[2][0].setIcon(new ImageIcon(/*"Some trap pic"*/));
+        	gameBoard[3][1].setIcon(new ImageIcon(/*"Some trap pic"*/));
+        	gameBoard[4][0].setIcon(new ImageIcon(/*"Some trap pic"*/));
+        	gameBoard[3][0].setIcon(new ImageIcon(/*"Some den pic"*/));
 
         	//right side
-        	gameBoard[2][8].setIcon(new ImageIcon(/*"Some trap pic"*/)));
-        	gameBoard[3][7].setIcon(new ImageIcon(/*"Some trap pic"*/)));
-        	gameBoard[4][8].setIcon(new ImageIcon(/*"Some trap pic"*/)));
-        	gameBoard[3][8].setIcon(new ImageIcon(/*"Some den pic"*/)));
+        	gameBoard[2][8].setIcon(new ImageIcon(/*"Some trap pic"*/));
+        	gameBoard[3][7].setIcon(new ImageIcon(/*"Some trap pic"*/));
+        	gameBoard[4][8].setIcon(new ImageIcon(/*"Some trap pic"*/));
+        	gameBoard[3][8].setIcon(new ImageIcon(/*"Some den pic"*/));
     	}
 
 }
