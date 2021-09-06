@@ -5,35 +5,76 @@ import javax.swing.event.*;
 
 class GameView extends JFrame {
 	private JButton[][] gameBoard;
+	private JLabel turn;
 
 	GameView() {
 		gameBoard = new JButton[7][9];
 
+<<<<<<< HEAD
 		this.setTitle("Animal Chess");
 		this.setSize(720, 560); //piece icons = 80px
 		this.setLayout(new BorderLayout());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		JPanel center = new JPanel(new GridLayout(7, 9));
+=======
+		setTitle("Animal Chess");
+		setSize(760, 650); //piece icons = 80px
+	    	setLayout(new BorderLayout());
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        	JPanel center = new JPanel(new GridLayout(7, 9));
+>>>>>>> db31d174a9443b9daf86d4434c1cb21142403fe1
 		for (int i = 0; i < 7; i++) {
 			for (int j = 0; j < 9; j++) {
 				gameBoard[i][j] = new JButton();
-				gameBoard[i][j].setBackground(Color.white);
+                		gameBoard[i][j].setBackground(Color.white);
                 		center.add(gameBoard[i][j]);
 			}
 		}
-		add(center, BorderLayout.CENTER);
+        
+        	JPanel top = new JPanel(new FlowLayout());
+        	turn = new JLabel();
+        	top.add(turn);
+
+        	add(top, BorderLayout.NORTH);
+        	add(center, BorderLayout.CENTER);
         	initIcons();
-		this.setVisible(true);
+		setVisible(true);
 	}
 
 	/**
 	 * Initializes the icons on each button.
 	 */
 	public void initIcons() {
+<<<<<<< HEAD
 
 		initRiver();
 		initDenTraps();
+=======
+		
+		initTerrain();
+		
+		//red pieces
+		gameBoard[0][0].setIcon(new ImageIcon("tiger_red.png"));
+		gameBoard[0][2].setIcon(new ImageIcon("elephant_red.png"));
+		gameBoard[1][1].setIcon(new ImageIcon("cat_red.png"));
+		gameBoard[2][2].setIcon(new ImageIcon("wolf_red.png"));
+		gameBoard[4][2].setIcon(new ImageIcon("leopard_red.png"));
+		gameBoard[5][1].setIcon(new ImageIcon("dog_red.png"));
+		gameBoard[6][0].setIcon(new ImageIcon("lion_red.png"));
+		gameBoard[6][2].setIcon(new ImageIcon("mouse_red.png"));
+
+		//blue pieces
+		gameBoard[6][8].setIcon(new ImageIcon("tiger_blue.png"));
+		gameBoard[6][6].setIcon(new ImageIcon("elephant_blue.png"));
+		gameBoard[5][7].setIcon(new ImageIcon("cat_blue.png"));
+		gameBoard[4][6].setIcon(new ImageIcon("wolf_blue.png"));
+		gameBoard[2][6].setIcon(new ImageIcon("leopard_blue.png"));
+		gameBoard[1][7].setIcon(new ImageIcon("dog_blue.png"));
+		gameBoard[0][8].setIcon(new ImageIcon("lion_blue.png"));
+		gameBoard[0][6].setIcon(new ImageIcon("mouse_blue.png"));
+>>>>>>> db31d174a9443b9daf86d4434c1cb21142403fe1
 
 	}
 
@@ -56,9 +97,19 @@ class GameView extends JFrame {
 	public void addButtonListener(JButton b, ActionListener al) {
 		b.addActionListener(al);
 	}
+<<<<<<< HEAD
 
 	private void initRiver()
     	{
+=======
+	
+	/**
+	 * Initializes River, Den and Trap icons in their positions
+	 */
+	private void initTerrain()
+    	{  
+		//Rivers
+>>>>>>> db31d174a9443b9daf86d4434c1cb21142403fe1
         	for (int i = 5; i>=4; i--) {
             		for (int j = 3; j<=5;j++) {
                 		gameBoard[i][j].setIcon(new ImageIcon("img/River.png"));
@@ -70,6 +121,7 @@ class GameView extends JFrame {
                 		gameBoard[i][j].setIcon(new ImageIcon("River.png"));
             		}
         	}
+<<<<<<< HEAD
     	}
 
 	private void initDenTraps()
@@ -85,6 +137,59 @@ class GameView extends JFrame {
         	gameBoard[3][7].setIcon(new ImageIcon("img/Trap.png"));
         	gameBoard[4][8].setIcon(new ImageIcon("img/Trap.png"));
         	gameBoard[3][8].setIcon(new ImageIcon("img/Den.png"));
+=======
+		
+		//left side terrains
+        	gameBoard[2][0].setIcon(new ImageIcon("Trap.png"));
+        	gameBoard[3][1].setIcon(new ImageIcon("Trap.png"));
+        	gameBoard[4][0].setIcon(new ImageIcon("Trap.png"));
+        	gameBoard[3][0].setIcon(new ImageIcon("Den.png"));
+
+        	//right side terrains
+        	gameBoard[2][8].setIcon(new ImageIcon("Trap.png"));
+        	gameBoard[3][7].setIcon(new ImageIcon("Trap.png"));
+        	gameBoard[4][8].setIcon(new ImageIcon("Trap.png"));
+        	gameBoard[3][8].setIcon(new ImageIcon("Den.png"));
+>>>>>>> db31d174a9443b9daf86d4434c1cb21142403fe1
     	}
+	
+	/**
+	 * Sets the button color to green when valid direction
+	 * @param btn the button that is a valid direction
+	 */
+	public void showValidDir(JButton btn)
+    	{
+        	btn.setBackground(Color.green);
+    	}
+	
+	/**
+	 * Resets the button colors to white
+	 */
+	public void resetBoardColor()
+	{
+		for (int i = 0; i < 7; i++) {
+			for (int j = 0; j < 9; j++) {
+				gameBoard[i][j].setBackground(Color.white);
+			}
+		}
+	}
+	
+	/**
+	 * Sets the label to the color of the current player's turn
+	 * @param player the current player
+	 */
+    	public void setPlayerTurninfo(Player player)
+    	{
+        	turn.setText(player.getColor()+ "'s Turn");
+    	}
+	
+	/**
+	 * Sets the label to the winner
+	 * @param player the player who wins
+	 */
+	public void setWinnerInfo(Player player)
+	{
+		turn.setText(player.getColor() + " Wins!");
+	}
 
 }
