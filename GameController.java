@@ -9,6 +9,8 @@ class GameController() {
 	}
 
 	class BoardListener implements ActionListener {
-
+		public void actionPerformed(ActionEvent e) {
+			
+		}
 	}
 }
