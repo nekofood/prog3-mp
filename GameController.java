@@ -19,6 +19,9 @@ class GameController() {
 	 * Initiates a new game.
 	 */
 	public void newGame() {
+		view.disableAllButtons();
+
+		//Make sure you call this first in the main!!!
 		NewGameWindow ngView = new NewGameWindow();
 		Bag bag = model.getBag();
 
@@ -40,11 +43,13 @@ class GameController() {
 		while (ngView.getSelectedSide() = null)
 			assert true;
 
+		//insert pieces into the players' arraylists
 		model.initializePlayers(ngView.getSelectedSide());
 
 		//TODO: disable board during the NG process
 
 		ngView.closeWindow();
+		view.enableAllButtons();
 	}
 
 	class BoardListener implements ActionListener {
