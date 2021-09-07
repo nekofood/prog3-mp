@@ -26,6 +26,7 @@ class Game {
 	 * Executes the "draw animal piece and select color" section of starting a new game.
 	 * @return the player who will select their color and move first
 	 */
+	//TODO: move this to GameController 
 	public int drawAnimalPiece() {
 		bag.shuffleBag();
 
