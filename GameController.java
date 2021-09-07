@@ -14,7 +14,9 @@ class GameController() {
 		}
 	}
 
-	//Initiates a new game.
+	/**
+	 * Initiates a new game.
+	 */
 	public void newGame() {
 		NewGameWindow ngView = new NewGameWindow();
 		Bag bag = model.getBag();
@@ -29,6 +31,19 @@ class GameController() {
 
 		ngView.setPlayerDrawLabel(1, p1piece.getType());
 		ngView.setPlayerDrawLabel(2, p2piece.getType());
+
+		int higher = model.comparePieces(p1piece.getRank(), p2piece.getRank());
+		ngView.setHigherLabel("Player " + higher);
+
+		//halt code while waiting for user input lmao
+		while (ngView.getSelectedSide() = null)
+			assert true;
+
+		model.initializePlayers(ngView.getSelectedSide());
+
+		//TODO: disable board during the NG process
+
+		ngView.closeWindow();
 	}
 
 	class BoardListener implements ActionListener {

@@ -13,8 +13,10 @@ class NewGameWindow extends JFrame {
 	//TODO: hook this to the game somehow
 
 	NewGameWindow() {
+		selectSide = null;
+
 		this.setTitle("Animal Chess: New Game");
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.setLayout(new BoxLayout());
 
 		instructionLabel = new JLabel("Higher piece moves first and gets to pick a side");
