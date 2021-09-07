@@ -9,6 +9,7 @@ class NewGameWindow extends JFrame {
 	JLabel movesFirstLabel;
 	JButton redButton;
 	JButton blueButton;
+	int selectedSide;
 	//TODO: hook this to the game somehow
 
 	NewGameWindow() {
@@ -49,6 +50,22 @@ class NewGameWindow extends JFrame {
 	}
 
 	/**
+	 * Sets the "drew higher!" label.
+	 * @param s the string to prepend to "drew higher!"
+	 */
+	public void setHigherLabel(String s) {
+		movesFirstLabel.setText(s + " drew higher! Pick a color:")
+	}
+
+	/**
+	 * Returns the side selected by the user in the window.
+	 * @return 1 if the player selected red, 2 if right
+	 */
+	public void getSelectedSide() {
+		return selectedSide;
+	}
+
+	/**
 	 * Closes this window.
 	 */
 	public void closeWindow() {
@@ -61,10 +78,10 @@ class NewGameWindow extends JFrame {
 		//only question is, how?
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == blueButton) {
-
+				selectedSide = 2;
 			}
 			if (e.getSource() == redButton) {
-
+				selectedSide = 1;
 			}
 		}
 	}

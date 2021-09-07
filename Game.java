@@ -26,7 +26,7 @@ class Game {
 	 * Executes the "draw animal piece and select color" section of starting a new game.
 	 * @return the player who will select their color and move first
 	 */
-	//TODO: move this to GameController 
+	/*
 	public int drawAnimalPiece() {
 		bag.shuffleBag();
 
@@ -47,10 +47,11 @@ class Game {
 		return 2;
 		//pass control back to the controller
 	}
+	*/
 
 	/**
 	 * Adds the board pieces to each player's array.
-	 * @param firstSide the side chosen by the first player
+	 * @param firstSide the side chosen by the first player (in accordance to Owner no.)
 	 */
 	public void initializePlayers(int firstSide) {
 		//USE WHOSETURN!!!
@@ -114,5 +115,9 @@ class Game {
 
 	public Player getPlayer2() {
 		return player2;
+	}
+
+	public Bag getBag() {
+		return bag;
 	}
 }

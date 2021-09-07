@@ -17,6 +17,18 @@ class GameController() {
 	//Initiates a new game.
 	public void newGame() {
 		NewGameWindow ngView = new NewGameWindow();
+		Bag bag = model.getBag();
+
+		bag.shuffleBag();
+
+		Piece p1piece = bag.drawPiece();
+		Piece p2piece = bag.drawPiece();
+		//bandaid fix to prevent both players from drawing the same piece type
+		if (p1piece.getType().equals(p2.piece.getType()))
+			p2piece = bag.drawPiece();
+
+		ngView.setPlayerDrawLabel(1, p1piece.getType());
+		ngView.setPlayerDrawLabel(2, p2piece.getType());
 	}
 
 	class BoardListener implements ActionListener {
