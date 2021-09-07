@@ -79,9 +79,9 @@ class Game {
 	}
 
 	/**
-	 * Executes a turn by moving a piece in a given direction.
+	 * Executes a piece's movePiece method.
 	 */
-	public boolean doTurn(Piece piece, char direction) {
+	public boolean movePiece(Piece piece, char direction) {
 		return piece.movePiece(direction);
 	}
 
