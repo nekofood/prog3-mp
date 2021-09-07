@@ -23,22 +23,14 @@ class Game {
 	}
 
 	/**
-	 * Executes the "draw animal piece and select color" section of starting a new game.
-	 * @return the player who will select their color and move first
+	 * Compares the ranks of two pieces (for new game) and sets the first player accordingly.
+	 * @param p1 p1's piece rank
+	 * @param p2 p2's piece rank
+	 * @return the player who drew the higher piece
 	 */
-	public int drawAnimalPiece() {
-		bag.shuffleBag();
-
-		Piece p1piece = bag.drawPiece();
-		Piece p2piece = bag.drawPiece();
-		//bandaid fix to prevent both players from drawing the same piece type
-		if (p1piece.getType().equals(p2.piece.getType()))
-			p2piece = bag.drawPiece();
-
-		System.out.println("Bag pieces drawn");
-
+	public int comparePieces(int p1, int p2) {
 		//set first player to whoever drew the higher piece
-		if (p1piece.getRank() > p2piece.getRank()) {
+		if (p1 > p2) {
 			whoseTurn = 1;
 			return 1;
 		}
@@ -49,7 +41,7 @@ class Game {
 
 	/**
 	 * Adds the board pieces to each player's array.
-	 * @param firstSide the side chosen by the first player
+	 * @param firstSide the side chosen by the first player (in accordance to Owner no.)
 	 */
 	public void initializePlayers(int firstSide) {
 		//USE WHOSETURN!!!
@@ -79,9 +71,9 @@ class Game {
 	}
 
 	/**
-	 * Executes a turn by moving a piece in a given direction.
+	 * Executes a piece's movePiece method.
 	 */
-	public boolean doTurn(Piece piece, char direction) {
+	public boolean movePiece(Piece piece, char direction) {
 		return piece.movePiece(direction);
 	}
 
@@ -113,5 +105,9 @@ class Game {
 
 	public Player getPlayer2() {
 		return player2;
+	}
+
+	public Bag getBag() {
+		return bag;
 	}
 }
