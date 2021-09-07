@@ -10,12 +10,6 @@ class GameView extends JFrame {
 	GameView() {
 		gameBoard = new JButton[7][9];
 
-		this.setTitle("Animal Chess");
-		this.setSize(720, 560); //piece icons = 80px
-		this.setLayout(new BorderLayout());
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-		JPanel center = new JPanel(new GridLayout(7, 9));
 		setTitle("Animal Chess");
 		setSize(760, 650); //piece icons = 80px
 	    	setLayout(new BorderLayout());
@@ -29,7 +23,7 @@ class GameView extends JFrame {
                 		center.add(gameBoard[i][j]);
 			}
 		}
-
+        
         	JPanel top = new JPanel(new FlowLayout());
         	turn = new JLabel();
         	top.add(turn);
@@ -44,12 +38,9 @@ class GameView extends JFrame {
 	 * Initializes the icons on each button.
 	 */
 	public void initIcons() {
-
-		initRiver();
-		initDenTraps();
-
+		
 		initTerrain();
-
+		
 		//red pieces
 		gameBoard[0][0].setIcon(new ImageIcon("tiger_red.png"));
 		gameBoard[0][2].setIcon(new ImageIcon("elephant_red.png"));
@@ -75,8 +66,8 @@ class GameView extends JFrame {
 	/**
 	 * Transfers the visuals from one square to another.
 	 * The source square is cleared in the process.
-	 * @param src the source square JButton
-	 * @param destination the destination square JButton
+	 * @param src the source square
+	 * @param src the destination square
 	 */
 	public void movePiece(JButton src, JButton destination) {
 		destination.setIcon(src.getIcon());
@@ -91,20 +82,16 @@ class GameView extends JFrame {
 	public void addButtonListener(JButton b, ActionListener al) {
 		b.addActionListener(al);
 	}
-
-	private void initRiver()
-    	{
-
-
+	
 	/**
 	 * Initializes River, Den and Trap icons in their positions
 	 */
 	private void initTerrain()
-    	{
+    	{  
 		//Rivers
         	for (int i = 5; i>=4; i--) {
             		for (int j = 3; j<=5;j++) {
-                		gameBoard[i][j].setIcon(new ImageIcon("img/River.png"));
+                		gameBoard[i][j].setIcon(new ImageIcon("River.png"));
             		}
         	}
 
@@ -113,22 +100,7 @@ class GameView extends JFrame {
                 		gameBoard[i][j].setIcon(new ImageIcon("River.png"));
             		}
         	}
-    	}
-
-	private void initDenTraps()
-    	{
-        	//left side
-        	gameBoard[2][0].setIcon(new ImageIcon("img/Trap.png"));
-        	gameBoard[3][1].setIcon(new ImageIcon("img/Trap.png"));
-        	gameBoard[4][0].setIcon(new ImageIcon("img/Trap.png"));
-        	gameBoard[3][0].setIcon(new ImageIcon("img/Den.png"));
-
-        	//right side
-        	gameBoard[2][8].setIcon(new ImageIcon("img/Trap.png"));
-        	gameBoard[3][7].setIcon(new ImageIcon("img/Trap.png"));
-        	gameBoard[4][8].setIcon(new ImageIcon("img/Trap.png"));
-        	gameBoard[3][8].setIcon(new ImageIcon("img/Den.png"));
-
+		
 		//left side terrains
         	gameBoard[2][0].setIcon(new ImageIcon("Trap.png"));
         	gameBoard[3][1].setIcon(new ImageIcon("Trap.png"));
@@ -141,7 +113,7 @@ class GameView extends JFrame {
         	gameBoard[4][8].setIcon(new ImageIcon("Trap.png"));
         	gameBoard[3][8].setIcon(new ImageIcon("Den.png"));
     	}
-
+	
 	/**
 	 * Sets the button color to green when valid direction
 	 * @param btn the button that is a valid direction
@@ -150,7 +122,7 @@ class GameView extends JFrame {
     	{
         	btn.setBackground(Color.green);
     	}
-
+	
 	/**
 	 * Resets the button colors to white
 	 */
@@ -171,7 +143,7 @@ class GameView extends JFrame {
     	{
         	turn.setText(player.getColor()+ "'s Turn");
     	}
-
+	
 	/**
 	 * Sets the label to the winner
 	 * @param player the player who wins
