@@ -152,5 +152,29 @@ class GameView extends JFrame {
 	{
 		turn.setText(player.getColor() + " Wins!");
 	}
+	
+	/**
+	 * Enables all the buttons on the board
+	 */
+	public void enableAllButtons()
+	{
+		for (int i = 0; i < 7; i++) {
+			for (int j = 0; j < 9; j++) {
+				gameBoard[i][j].setEnabled(true);
+			}
+		}
+	}
+	
+	/**
+	 * Disables all the buttons on the board
+	 */
+	public void disableAllButtons()
+	{
+		for (int i = 0; i < 7; i++) {
+			for (int j = 0; j < 9; j++) {
+				gameBoard[i][j].setEnabled(false);
+			}
+		}
+	}
 
 }
