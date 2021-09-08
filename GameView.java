@@ -12,10 +12,10 @@ class GameView extends JFrame {
 
 		setTitle("Animal Chess");
 		setSize(760, 650); //piece icons = 80px
-	    	setLayout(new BorderLayout());
+	    setLayout(new BorderLayout());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        	JPanel center = new JPanel(new GridLayout(7, 9));
+        JPanel center = new JPanel(new GridLayout(7, 9));
 		for (int i = 0; i < 7; i++) {
 			for (int j = 0; j < 9; j++) {
 				gameBoard[i][j] = new JButton();
@@ -23,14 +23,14 @@ class GameView extends JFrame {
                 		center.add(gameBoard[i][j]);
 			}
 		}
-        
-        	JPanel top = new JPanel(new FlowLayout());
-        	turn = new JLabel();
-        	top.add(turn);
 
-        	add(top, BorderLayout.NORTH);
-        	add(center, BorderLayout.CENTER);
-        	initIcons();
+    	JPanel top = new JPanel(new FlowLayout());
+    	turn = new JLabel();
+    	top.add(turn);
+
+    	add(top, BorderLayout.NORTH);
+    	add(center, BorderLayout.CENTER);
+    	initIcons();
 		setVisible(true);
 	}
 
@@ -38,9 +38,9 @@ class GameView extends JFrame {
 	 * Initializes the icons on each button.
 	 */
 	public void initIcons() {
-		
+
 		initTerrain();
-		
+
 		//red pieces
 		gameBoard[0][0].setIcon(new ImageIcon("tiger_red.png"));
 		gameBoard[0][2].setIcon(new ImageIcon("elephant_red.png"));
@@ -82,12 +82,12 @@ class GameView extends JFrame {
 	public void addButtonListener(JButton b, ActionListener al) {
 		b.addActionListener(al);
 	}
-	
+
 	/**
 	 * Initializes River, Den and Trap icons in their positions
 	 */
 	private void initTerrain()
-    	{  
+    	{
 		//Rivers
         	for (int i = 5; i>=4; i--) {
             		for (int j = 3; j<=5;j++) {
@@ -100,7 +100,7 @@ class GameView extends JFrame {
                 		gameBoard[i][j].setIcon(new ImageIcon("River.png"));
             		}
         	}
-		
+
 		//left side terrains
         	gameBoard[2][0].setIcon(new ImageIcon("Trap.png"));
         	gameBoard[3][1].setIcon(new ImageIcon("Trap.png"));
@@ -113,7 +113,7 @@ class GameView extends JFrame {
         	gameBoard[4][8].setIcon(new ImageIcon("Trap.png"));
         	gameBoard[3][8].setIcon(new ImageIcon("Den.png"));
     	}
-	
+
 	/**
 	 * Sets the button color to green when valid direction
 	 * @param btn the button that is a valid direction
@@ -122,7 +122,7 @@ class GameView extends JFrame {
     	{
         	btn.setBackground(Color.green);
     	}
-	
+
 	/**
 	 * Resets the button colors to white
 	 */
@@ -134,7 +134,7 @@ class GameView extends JFrame {
 			}
 		}
 	}
-	
+
 	/**
 	 * Sets the label to the color of the current player's turn
 	 * @param player the current player
@@ -143,7 +143,7 @@ class GameView extends JFrame {
     	{
         	turn.setText(player.getColor()+ "'s Turn");
     	}
-	
+
 	/**
 	 * Sets the label to the winner
 	 * @param player the player who wins
@@ -152,7 +152,7 @@ class GameView extends JFrame {
 	{
 		turn.setText(player.getColor() + " Wins!");
 	}
-	
+
 	/**
 	 * Enables all the buttons on the board
 	 */
@@ -164,7 +164,7 @@ class GameView extends JFrame {
 			}
 		}
 	}
-	
+
 	/**
 	 * Disables all the buttons on the board
 	 */
