@@ -69,6 +69,25 @@ class GameController() {
 		return false;
 	}
 
+	/**
+	 * Converts x,y movement to NSEW chars.
+	 * Please input within the range of -1 <= x <= 1.
+	 * @param X -1 or 1 (W/E)
+	 * @param Y -1 or 1 (S/N)
+	 * @return the compass direction to move in; null if invalid
+	 */
+	public char moveToChar(int X, int Y) {
+			if (X == 1 && Y == 0)
+				return 'E';
+			if (X == -1 && Y == 0)
+				return 'W';
+			if (X == 0 && Y == 1)
+				return 'N';
+			if (X == 0 && Y == -1)
+				return 'S';
+			return null;
+	}
+
 	class BoardListener implements ActionListener {
 		//TODO!!!!!
 		public void actionPerformed(ActionEvent e) {
@@ -93,9 +112,11 @@ class GameController() {
 						/* if a piece IS selected, time to handle movement! */
 						if (spc != null) {
 							//check if the piece is orthogonal to the space just clicked
-							if (isMoveValid(spc.getX(), spc.getY(), j, i)) {
+							if (isMoveValid(spc.getX(), spc.getY(), j, i) && ) {
+								if (spc.movePiece(moveToChar(j - spc.getX(), i - spc.getY()))) {
+									model.advanceTurn();
+								}
 								spc = null;
-								model.advanceTurn();
 								return;
 							}
 							spc = null;
