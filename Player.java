@@ -33,10 +33,6 @@ class Player {
 		return alive;
 	}
 
-	public Tile[] getTiles() {
-		return tiles;
-	}
-
 	public String getColor() {
 		return color;
 	}

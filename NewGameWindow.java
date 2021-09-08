@@ -14,7 +14,7 @@ class NewGameWindow extends JFrame {
 	//TODO: hook this to the game somehow
 
 	NewGameWindow() {
-		selectSide = null;
+		selectedSide = 0;
 
 		this.setTitle("Animal Chess: New Game");
 		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -64,7 +64,7 @@ class NewGameWindow extends JFrame {
 	 * Returns the side selected by the user in the window.
 	 * @return 1 if the player selected red, 2 if right
 	 */
-	public void getSelectedSide() {
+	public int getSelectedSide() {
 		return selectedSide;
 	}
 

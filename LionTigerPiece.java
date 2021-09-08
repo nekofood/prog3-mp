@@ -124,9 +124,9 @@ public class LionTigerPiece extends Piece {
     //weirdchamp mouse check method: get the mice from Board
     for (int j = 0; j < pieces.size(); j++) {
         if (pieces.get(j).getType().equals("Mouse") && pieces.get(j) instanceof MousePiece && mouse1 == null)
-		mouse1 = pieces.get(j);
+		mouse1 = (MousePiece) pieces.get(j);
 	else if (pieces.get(j).getType().equals("Mouse") && pieces.get(j) instanceof MousePiece)
-		mouse2 = pieces.get(j);
+		mouse2 = (MousePiece) pieces.get(j);
     }
 
     int[][] mousePositions = {

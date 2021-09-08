@@ -82,8 +82,8 @@ class Board {
 			if (current.getOwner() == 2 && current.getX() == terrain[0].getX() && current.getY() == terrain[0].getY()) {
 					return 2;
 			}
-
-			return 0;
+		}
+		return 0;
 	}
 
 	/**

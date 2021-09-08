@@ -42,7 +42,7 @@ class GameController() {
 		ngView.setHigherLabel("Player " + higher);
 
 		//halt code while waiting for user input lmao
-		while (ngView.getSelectedSide() = null)
+		while (ngView.getSelectedSide() = 0)
 			assert true;
 
 		//insert pieces into the players' arraylists
@@ -74,7 +74,7 @@ class GameController() {
 	 * Please input within the range of -1 <= x <= 1.
 	 * @param X -1 or 1 (W/E)
 	 * @param Y -1 or 1 (S/N)
-	 * @return the compass direction to move in; null if invalid
+	 * @return the compass direction to move in; 'a' if invalid
 	 */
 	public char moveToChar(int X, int Y) {
 			if (X == 1 && Y == 0)
@@ -85,7 +85,7 @@ class GameController() {
 				return 'N';
 			if (X == 0 && Y == -1)
 				return 'S';
-			return null;
+			return 'a';
 	}
 
 	class BoardListener implements ActionListener {
@@ -114,7 +114,8 @@ class GameController() {
 							int spcX = spc.getX();
 							int spcY = spc.getY();
 							//check if the piece is orthogonal to the space just clicked
-							if (isMoveValid(spcX, spcY, j, i) && ) {
+							//yeah this sucks
+							if (isMoveValid(spcX, spcY, j, i)) {
 								if (spc.movePiece(moveToChar(j - spcX, i - spcY))) {
 									view.movePiece(view.getBoard()[spcY][spcX], view.getBoard()[i][j]);
 									model.advanceTurn();
