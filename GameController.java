@@ -1,6 +1,6 @@
 import java.awt.event.*;
 
-class GameController() {
+class GameController {
 	private GameView view;
 	private Game model;
 	private Piece spc; //selected piece for movement handling
@@ -42,7 +42,7 @@ class GameController() {
 		ngView.setHigherLabel("Player " + higher);
 
 		//halt code while waiting for user input lmao
-		while (ngView.getSelectedSide() = 0)
+		while (ngView.getSelectedSide() == 0)
 			assert true;
 
 		//insert pieces into the players' arraylists

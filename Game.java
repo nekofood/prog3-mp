@@ -51,9 +51,14 @@ class Game {
 			firstplayer = player1;
 			secondplayer = player2;
 		}
-		if (whoseTurn == 2) {
+		else if (whoseTurn == 2) {
 			firstplayer = player2;
 			secondplayer = player1;
+		}
+		//safety case
+		else {
+			firstplayer = player1;
+			secondplayer = player2;
 		}
 
 		if (firstSide == 1) {

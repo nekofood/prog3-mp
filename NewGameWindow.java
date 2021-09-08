@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.swing.BoxLayout;
 
 class NewGameWindow extends JFrame {
 	JLabel p1label;

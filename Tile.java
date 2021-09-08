@@ -9,7 +9,7 @@ public class Tile {
   * @param x x-position
   * @param y y-position
   * @param owner Piece owner (0 = none, 1 = player 1, 2 = player 2)
-  * @param board The board this piece belongs to 
+  * @param board The board this piece belongs to
   */
   Tile (String t, int x, int y, int owner, Board board) {
     type = t; //idea: water with mouse is its own type, to simplify tiger jump  checking
@@ -17,7 +17,7 @@ public class Tile {
     this.y = y;
     ownedBy = owner;
     this.board = board;
-  } 
+  }
 
   /**
   * Returns the X-position of this tile.
@@ -45,7 +45,7 @@ public class Tile {
   public void setType(String t) {
     this.type = t;
   }
-  
+
   /**
   * Returns the owner of this tile.
   * @return 0 if the tile is unowned, or 1 or 2 if the tile is owned by player 1 or 2, respectively.
@@ -54,7 +54,7 @@ public class Tile {
     return ownedBy;
   }
 
-  public int getBoard() {
+  public Board getBoard() {
     return board;
   }
 
@@ -66,5 +66,4 @@ public class Tile {
                        //might be useful for GUI phase
 		       //
   protected Board board;
-  boolean solid;
 }

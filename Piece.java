@@ -32,7 +32,7 @@ public class Piece extends Tile {
   * @return false if movement fails, true otherwise.
   */
   public boolean movePiece(char direction) {
-    ArrayList<Pieces> pieces = this.getBoard().getPieces();
+    ArrayList<Piece> pieces = this.getBoard().getPieces();
     Tile[] terrain = this.getBoard().getTerrain();
     int checkX = 0;
     int checkY = 0;
@@ -60,7 +60,7 @@ public class Piece extends Tile {
 
 
     //iterate through entire piece array for piece collision checking
-    for (int i = 0; i < pieces.length; i++) {
+    for (int i = 0; i < pieces.size(); i++) {
       if (pieces.get(i).getX() == (this.getX() + checkX) && pieces.get(i).getY() == (this.getY() + checkY)) {
         collision = true;
         collisionIndex = i;
@@ -121,6 +121,7 @@ public class Piece extends Tile {
       return false;
     if (target.getTileUnder() != null && target.getTileUnder().getType().equals("Trap") && target.getTileUnder().getOwner() == this.getOwner());
     	return true;
+		
     return this.rank >= target.getRank();
   }
 
