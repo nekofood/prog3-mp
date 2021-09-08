@@ -4,5 +4,7 @@ class Main {
 			Game m = new Game();
 			GameView v = new GameView();
 			GameController g = new GameController(v, m);
+
+			g.newGame();
 	}
 }

@@ -99,6 +99,10 @@ class Game {
 		return 0;
 	}
 
+	public int getWhoseTurn() {
+		return whoseTurn;
+	}
+
 	public Player getPlayer1() {
 		return player1;
 	}
