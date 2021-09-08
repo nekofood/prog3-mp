@@ -1,6 +1,7 @@
-import java.swing.*;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.swing.BoxLayout;
 
 class NewGameWindow extends JFrame {
 	JLabel p1label;
@@ -26,8 +27,8 @@ class NewGameWindow extends JFrame {
 		redButton = new JButton("Red (left)");
 		blueButton = new JButton("Blue (right)");
 
-		redButton.addButtonListener(new NewGameListener());
-		blueButton.addButtonListener(new NewGameListener());
+		redButton.addActionListener(new NewGameListener());
+		blueButton.addActionListener(new NewGameListener());
 
 		add(instructionLabel);
 		add(p1label);
@@ -56,7 +57,7 @@ class NewGameWindow extends JFrame {
 	 * @param s the string to prepend to "drew higher!"
 	 */
 	public void setHigherLabel(String s) {
-		movesFirstLabel.setText(s + " drew higher! Pick a color:")
+		movesFirstLabel.setText(s + " drew higher! Pick a color:");
 	}
 
 	/**

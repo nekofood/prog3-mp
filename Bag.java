@@ -1,4 +1,4 @@
-import java.util.Collections;
+import java.util.*;
 /**
  * This class represents a bag for shuffling pieces.
  */
@@ -6,7 +6,7 @@ class Bag {
 	Bag(ArrayList<Piece> boardPieces) {
 		pieces = new ArrayList<>();
 		for (int i = 0; i < pieces.size(); i++) {
-			pieces.add(boardPieces.get(i))
+			pieces.add(boardPieces.get(i));
 		}
 
 	}
@@ -30,6 +30,6 @@ class Bag {
 		return piece;
 	}
 
-	private ArrayList<Piece> pieces; 
-	
+	private ArrayList<Piece> pieces;
+
 }

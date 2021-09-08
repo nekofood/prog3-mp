@@ -1,11 +1,14 @@
+import java.util.*;
+
 class Board {
 	private ArrayList<Piece> pieces;
-	private Tile[] terrain[20];
+	private Tile[] terrain;
 
 	Board() {
 		//all piece initiation goes here
 		//TODO after finishing up Game class mayhaps
 		pieces = new ArrayList<>();
+		terrain = new Tile[20];
 		initPieces();
 
 		//player tiles

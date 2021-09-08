@@ -56,16 +56,16 @@ class Game {
 			secondplayer = player1;
 		}
 
-		if (firstSide = 1) {
+		if (firstSide == 1) {
 			for (int i = 0; i < 8; i++)
 				firstplayer.initializePiece(board.getPieces().get(i));
-			for (i = 8; i < 16; i++)
+			for (int i = 8; i < 16; i++)
 				secondplayer.initializePiece(board.getPieces().get(i));
 		}
-		if (firstSide = 2) {
+		if (firstSide == 2) {
 			for (int i = 0; i < 8; i++)
 				secondplayer.initializePiece(board.getPieces().get(i));
-			for (i = 8; i < 16; i++)
+			for (int i = 8; i < 16; i++)
 				firstplayer.initializePiece(board.getPieces().get(i));
 		}
 	}
@@ -94,9 +94,7 @@ class Game {
 			return 2;
 		if (player2.getLivePieces() == 0)
 			return 1;
-		if (this.board.checkEnd != 0)
-			return checkEnd;
-		return 0;
+		return this.board.checkEnd();
 	}
 
 	public int getWhoseTurn() {
@@ -113,5 +111,9 @@ class Game {
 
 	public Bag getBag() {
 		return bag;
+	}
+
+	public Board getBoard() {
+		return board;
 	}
 }

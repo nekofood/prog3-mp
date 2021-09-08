@@ -1,7 +1,8 @@
+import java.util.*;
 /**
 * Represents a moveable piece.
 */
-public class Piece extends Tile { 
+public class Piece extends Tile {
 
   /**
   * This constructor creates a Piece object with a type, owner, and position.
@@ -86,7 +87,7 @@ public class Piece extends Tile {
     }
 
     //capture checking
-    if (collision && capturePiece(pieces[collisionIndex])) {
+    if (collision && capturePiece(pieces.get(collisionIndex))) {
       this.x += checkX;
       this.y += checkY;
       pieces.get(collisionIndex).getCaptured();
@@ -112,7 +113,7 @@ public class Piece extends Tile {
 
   /**
   * Checks if this piece can capture the piece it is moving onto.
-  * @param target the piece to compare ranks against 
+  * @param target the piece to compare ranks against
   * @return true if capturing fails, false otherwise.
   */
   public boolean capturePiece(Piece target) {
@@ -120,7 +121,7 @@ public class Piece extends Tile {
       return false;
     if (target.getTileUnder() != null && target.getTileUnder().getType().equals("Trap") && target.getTileUnder().getOwner() == this.getOwner());
     	return true;
-    return this.rank >= target.rank;
+    return this.rank >= target.getRank();
   }
 
   /**
@@ -161,6 +162,6 @@ public class Piece extends Tile {
 	return this.getType() + " at " + this.getX() + ", " + this.getY();
   }
 
-  private int rank;
+  protected int rank;
   boolean isCaptured = false;
 }

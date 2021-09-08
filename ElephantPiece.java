@@ -11,7 +11,7 @@ public class ElephantPiece extends Piece {
 
 
 	/**
-	 * Checks if the targeted piece can be captured. 
+	 * Checks if the targeted piece can be captured.
 	 * Elephants cannot capture mice.
 	 * @param target the target piece
 	 * @return true if the piece is capturable, false otherwise
@@ -25,7 +25,7 @@ public class ElephantPiece extends Piece {
 			return false;
     		if (target.getTileUnder() != null && target.getTileUnder().getType().equals("Trap") && target.getTileUnder().getOwner() == this.getOwner());
     			return true;
-    		return this.rank >= target.rank;
+    		return this.rank >= target.getRank();
   	}
-	
+
 }

@@ -12,7 +12,7 @@ class GameController() {
 
 		for (int i = 0; i < 7; i++) {
 			for (int j = 0; j < 9; j++) {
-				v.addButtonListener(getBoard()[i][j], new BoardListener());
+				v.addButtonListener(v.getBoard()[i][j], new BoardListener());
 			}
 		}
 	}
@@ -32,7 +32,7 @@ class GameController() {
 		Piece p1piece = bag.drawPiece();
 		Piece p2piece = bag.drawPiece();
 		//bandaid fix to prevent both players from drawing the same piece type
-		if (p1piece.getType().equals(p2.piece.getType()))
+		if (p1piece.getType().equals(p2piece.getType()))
 			p2piece = bag.drawPiece();
 
 		ngView.setPlayerDrawLabel(1, p1piece.getType());
@@ -64,7 +64,7 @@ class GameController() {
 	public boolean isMoveValid(int srcX, int srcY, int destX, int destY) {
 		if ((srcX + destX == 1 || srcX + destX == -1) && (srcY + destY == 1 || srcY + destY == 1))
 			return true;
-		if (model.getBoard().getPieceAt(destX,destY) != null && model.getBoard().getPieceAt(destX,destY).getOwner() == getWhoseTurn)
+		if (model.getBoard().getPieceAt(destX,destY) != null && model.getBoard().getPieceAt(destX,destY).getOwner() == model.getWhoseTurn())
 			return false;
 		return false;
 	}
@@ -104,7 +104,7 @@ class GameController() {
 								   3. the piece is owned by the player who's taking their turn
 						  if all passes, select that piece
 								    */
-						if (spc == null && pc != null && pc.getOwner() == whoseTurn) {
+						if (spc == null && pc != null && pc.getOwner() == model.getWhoseTurn()) {
 							spc = pc;
 							//TODO: highlight movement cross
 							return;
@@ -116,7 +116,7 @@ class GameController() {
 							//check if the piece is orthogonal to the space just clicked
 							if (isMoveValid(spcX, spcY, j, i) && ) {
 								if (spc.movePiece(moveToChar(j - spcX, i - spcY))) {
-									view.movePiece(view.getBoard()[spcY][spcX], view.getBoard()[i][j])
+									view.movePiece(view.getBoard()[spcY][spcX], view.getBoard()[i][j]);
 									model.advanceTurn();
 								}
 								spc = null;

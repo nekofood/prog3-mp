@@ -1,3 +1,4 @@
+import java.util.*;
 /**
  * Represents a player in the game.
  */
@@ -26,7 +27,7 @@ class Player {
 	public int getLivePieces() {
 		int alive = 0;
 		for (int i = 0; i < pieces.size(); i++) {
-			if (!pieces.get(i).getCaptureStatus)
+			if (!pieces.get(i).getCaptureStatus())
 				++alive;
 		}
 		return alive;

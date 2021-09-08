@@ -1,8 +1,9 @@
+import java.util.*;
 /**
 * Represents a Tiger or Lion.
 */
 public class LionTigerPiece extends Piece {
-  
+
   /**
   * This constructor creates a Lion/Tiger Piece object with a type, owner, and position.
   * @param t Tile type
@@ -16,9 +17,9 @@ public class LionTigerPiece extends Piece {
   }
 
   /**
-  * Moves the piece in one direction. 
+  * Moves the piece in one direction.
   * <p>
-  * Tigers and Lions can jump across rivers, given that there is no mouse along the way. 
+  * Tigers and Lions can jump across rivers, given that there is no mouse along the way.
   * @param  direction The desired direction to move in (N/S/E/W).
   * @return false if movement fails, true otherwise.
   */
@@ -28,7 +29,7 @@ public class LionTigerPiece extends Piece {
     int checkY = 0;
     ArrayList<Piece> pieces = this.getBoard().getPieces();
     Tile[] terrain = this.getBoard().getTerrain();
-	    
+
     switch (direction) {
       case 'N':
         checkY = 1;
@@ -75,7 +76,7 @@ public class LionTigerPiece extends Piece {
     }
 
     //iterate through entire piece array for piece collision checking
-    for (int i = 0; i < pieces.length; i++) {
+    for (int i = 0; i < pieces.size(); i++) {
       if (pieces.get(i).getX() == (this.getX() + checkX) && pieces.get(i).getY() == (this.getY() + checkY)) {
         collision = true;
         collisionIndex = i;
@@ -83,7 +84,7 @@ public class LionTigerPiece extends Piece {
     }
 
     //capture checking
-    if (collision && capturePiece(pieces[collisionIndex])) {
+    if (collision && capturePiece(pieces.get(collisionIndex))) {
       this.x += checkX;
       this.y += checkY;
       pieces.get(collisionIndex).getCaptured();
@@ -118,17 +119,17 @@ public class LionTigerPiece extends Piece {
     ArrayList<Piece> pieces = this.getBoard().getPieces();
     MousePiece mouse1;
     MousePiece mouse2;
-    int[][] mousePositions[2][2];
+    //int[][] mousePositions = new int[2][2];
 
     //weirdchamp mouse check method: get the mice from Board
     for (int j = 0; j < pieces.size(); j++) {
-        if (pieces.get(j).getType().equals("Mouse") && mouse1 == null)
+        if (pieces.get(j).getType().equals("Mouse") && pieces.get(j) instanceof MousePiece && mouse1 == null)
 		mouse1 = pieces.get(j);
-	else if (pieces.get(j).getType().equals("Mouse"))
+	else if (pieces.get(j).getType().equals("Mouse") && pieces.get(j) instanceof MousePiece)
 		mouse2 = pieces.get(j);
     }
 
-    mousePositions = {
+    int[][] mousePositions = {
 	    {mouse1.getX(), mouse1.getY()},
 	    {mouse2.getX(), mouse2.getY()}
     };

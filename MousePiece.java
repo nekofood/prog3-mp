@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class MousePiece extends Piece {
 
   MousePiece(int x, int y, int o, Board b) {
@@ -40,7 +42,7 @@ public class MousePiece extends Piece {
 
 
     //iterate through entire piece array for piece collision checking
-    for (int i = 0; i < pieces.length; i++) {
+    for (int i = 0; i < pieces.size(); i++) {
       if (pieces.get(i).getX() == (this.getX() + checkX) && pieces.get(i).getY() == (this.getY() + checkY)) {
         collision = true;
         collisionIndex = i;
@@ -60,11 +62,11 @@ public class MousePiece extends Piece {
     }
 
     //capture checking
-    if (collision && capturePiece(pieces[collisionIndex])) {
+    if (collision && capturePiece(pieces.get(collisionIndex))) {
       this.x += checkX;
       this.y += checkY;
-      pieces[collisionIndex].getCaptured();
-      System.out.println("Captured an enemy " + pieces[collisionIndex].getType());
+      pieces.get(collisionIndex).getCaptured();
+      System.out.println("Captured an enemy " + pieces.get(collisionIndex).getType());
       return true;
     }
 
@@ -86,7 +88,7 @@ public class MousePiece extends Piece {
 
  /**
   * Checks if this piece can capture the piece it is moving onto. Mice can capture elephants, but cannot capture pieces on land while in the river (and vice versa).
-  * @param target the piece to compare ranks against 
+  * @param target the piece to compare ranks against
   * @return true if capturing fails, false otherwise.
   */
   public boolean capturePiece(Piece target) {
@@ -102,7 +104,7 @@ public class MousePiece extends Piece {
     	return true;
     if (target.getType().equals("Elephant"))
 	return true;
-    return this.rank >= target.rank;
+    return this.rank >= target.getRank();
   }
 
 }
