@@ -111,9 +111,12 @@ class GameController() {
 						}
 						/* if a piece IS selected, time to handle movement! */
 						if (spc != null) {
+							int spcX = spc.getX();
+							int spcY = spc.getY();
 							//check if the piece is orthogonal to the space just clicked
-							if (isMoveValid(spc.getX(), spc.getY(), j, i) && ) {
-								if (spc.movePiece(moveToChar(j - spc.getX(), i - spc.getY()))) {
+							if (isMoveValid(spcX, spcY, j, i) && ) {
+								if (spc.movePiece(moveToChar(j - spcX, i - spcY))) {
+									view.movePiece(view.getBoard()[spcY][spcX], view.getBoard()[i][j])
 									model.advanceTurn();
 								}
 								spc = null;
