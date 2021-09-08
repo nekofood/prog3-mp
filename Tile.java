@@ -12,7 +12,7 @@ public class Tile {
   * @param board The board this piece belongs to
   */
   Tile (String t, int x, int y, int owner, Board board) {
-    type = t; //idea: water with mouse is its own type, to simplify tiger jump  checking
+    type = t; 
     this.x = x;
     this.y = y;
     ownedBy = owner;
