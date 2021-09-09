@@ -119,9 +119,9 @@ public class Piece extends Tile {
   public boolean capturePiece(Piece target) {
     if (target.getOwner() == this.getOwner())
       return false;
-    if (target.getTileUnder() != null && target.getTileUnder().getType().equals("Trap") && target.getTileUnder().getOwner() == this.getOwner());
+    if (target.getTileUnder() != null && target.getTileUnder().getType().equals("Trap") && target.getTileUnder().getOwner() != this.getOwner())
     	return true;
-		
+
     return this.rank >= target.getRank();
   }
 

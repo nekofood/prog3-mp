@@ -12,6 +12,7 @@ class GameView extends JFrame {
 
 		setTitle("Animal Chess");
 		setSize(760, 650); //piece icons = 80px
+		setResizable(false);
 	    setLayout(new BorderLayout());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -42,24 +43,24 @@ class GameView extends JFrame {
 		initTerrain();
 
 		//red pieces
-		gameBoard[0][0].setIcon(new ImageIcon("tiger_red.png"));
-		gameBoard[0][2].setIcon(new ImageIcon("elephant_red.png"));
-		gameBoard[1][1].setIcon(new ImageIcon("cat_red.png"));
-		gameBoard[2][2].setIcon(new ImageIcon("wolf_red.png"));
-		gameBoard[4][2].setIcon(new ImageIcon("leopard_red.png"));
-		gameBoard[5][1].setIcon(new ImageIcon("dog_red.png"));
-		gameBoard[6][0].setIcon(new ImageIcon("lion_red.png"));
-		gameBoard[6][2].setIcon(new ImageIcon("mouse_red.png"));
+		gameBoard[0][0].setIcon(new ImageIcon("img/tiger_red.png"));
+		gameBoard[0][2].setIcon(new ImageIcon("img/elephant_red.png"));
+		gameBoard[1][1].setIcon(new ImageIcon("img/cat_red.png"));
+		gameBoard[2][2].setIcon(new ImageIcon("img/wolf_red.png"));
+		gameBoard[4][2].setIcon(new ImageIcon("img/leopard_red.png"));
+		gameBoard[5][1].setIcon(new ImageIcon("img/dog_red.png"));
+		gameBoard[6][0].setIcon(new ImageIcon("img/lion_red.png"));
+		gameBoard[6][2].setIcon(new ImageIcon("img/mouse_red.png"));
 
 		//blue pieces
-		gameBoard[6][8].setIcon(new ImageIcon("tiger_blue.png"));
-		gameBoard[6][6].setIcon(new ImageIcon("elephant_blue.png"));
-		gameBoard[5][7].setIcon(new ImageIcon("cat_blue.png"));
-		gameBoard[4][6].setIcon(new ImageIcon("wolf_blue.png"));
-		gameBoard[2][6].setIcon(new ImageIcon("leopard_blue.png"));
-		gameBoard[1][7].setIcon(new ImageIcon("dog_blue.png"));
-		gameBoard[0][8].setIcon(new ImageIcon("lion_blue.png"));
-		gameBoard[0][6].setIcon(new ImageIcon("mouse_blue.png"));
+		gameBoard[6][8].setIcon(new ImageIcon("img/tiger_blue.png"));
+		gameBoard[6][6].setIcon(new ImageIcon("img/elephant_blue.png"));
+		gameBoard[5][7].setIcon(new ImageIcon("img/cat_blue.png"));
+		gameBoard[4][6].setIcon(new ImageIcon("img/wolf_blue.png"));
+		gameBoard[2][6].setIcon(new ImageIcon("img/leopard_blue.png"));
+		gameBoard[1][7].setIcon(new ImageIcon("img/dog_blue.png"));
+		gameBoard[0][8].setIcon(new ImageIcon("img/lion_blue.png"));
+		gameBoard[0][6].setIcon(new ImageIcon("img/mouse_blue.png"));
 
 	}
 
@@ -91,27 +92,27 @@ class GameView extends JFrame {
 		//Rivers
         	for (int i = 5; i>=4; i--) {
             		for (int j = 3; j<=5;j++) {
-                		gameBoard[i][j].setIcon(new ImageIcon("River.png"));
+                		gameBoard[i][j].setIcon(new ImageIcon("img/River.png"));
             		}
         	}
 
         	for (int i = 2; i>=1; i--) {
             		for (int j = 3; j<=5;j++) {
-                		gameBoard[i][j].setIcon(new ImageIcon("River.png"));
+                		gameBoard[i][j].setIcon(new ImageIcon("img/River.png"));
             		}
         	}
 
 		//left side terrains
-        	gameBoard[2][0].setIcon(new ImageIcon("Trap.png"));
-        	gameBoard[3][1].setIcon(new ImageIcon("Trap.png"));
-        	gameBoard[4][0].setIcon(new ImageIcon("Trap.png"));
-        	gameBoard[3][0].setIcon(new ImageIcon("Den.png"));
+        	gameBoard[2][0].setIcon(new ImageIcon("img/trap_red.png"));
+        	gameBoard[3][1].setIcon(new ImageIcon("img/trap_red.png"));
+        	gameBoard[4][0].setIcon(new ImageIcon("img/trap_red.png"));
+        	gameBoard[3][0].setIcon(new ImageIcon("img/den_red.png"));
 
         	//right side terrains
-        	gameBoard[2][8].setIcon(new ImageIcon("Trap.png"));
-        	gameBoard[3][7].setIcon(new ImageIcon("Trap.png"));
-        	gameBoard[4][8].setIcon(new ImageIcon("Trap.png"));
-        	gameBoard[3][8].setIcon(new ImageIcon("Den.png"));
+        	gameBoard[2][8].setIcon(new ImageIcon("img/trap_blue.png"));
+        	gameBoard[3][7].setIcon(new ImageIcon("img/trap_blue.png"));
+        	gameBoard[4][8].setIcon(new ImageIcon("img/trap_blue.png"));
+        	gameBoard[3][8].setIcon(new ImageIcon("img/den_blue.png"));
     	}
 
 	/**

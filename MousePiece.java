@@ -95,15 +95,15 @@ public class MousePiece extends Piece {
     if (target.getOwner() == this.getOwner())
       return false;
     //prevent capturing land -> water
-    if (target.getTileUnder() != null && target.getTileUnder().getType().equals("Water") && this.getTileUnder() == null);
+    if (target.getTileUnder() != null && target.getTileUnder().getType().equals("Water") && this.getTileUnder() == null)
     	return false;
     //prevent capturing water -> land
     if (target.getTileUnder() == null && this.getTileUnder().getType().equals("Water"))
-	return false;
-    if (target.getTileUnder() != null && target.getTileUnder().getType().equals("Trap") && target.getTileUnder().getOwner() == this.getOwner());
+		return false;
+    if (target.getTileUnder() != null && target.getTileUnder().getType().equals("Trap") && target.getTileUnder().getOwner() == this.getOwner())
     	return true;
     if (target.getType().equals("Elephant"))
-	return true;
+		return true;
     return this.rank >= target.getRank();
   }
 

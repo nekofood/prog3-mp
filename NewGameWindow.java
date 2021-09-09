@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 class NewGameWindow extends JFrame {
+	JPanel panel;
 	JLabel p1label;
 	JLabel p2label;
 	JLabel instructionLabel;
@@ -14,10 +15,12 @@ class NewGameWindow extends JFrame {
 
 	NewGameWindow() {
 		selectedSide = 0;
+		panel = new JPanel();
 
 		this.setTitle("Animal Chess: New Game");
 		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+		this.setSize(400,200);
+		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
 		instructionLabel = new JLabel("Higher piece moves first and gets to pick a side");
 		p1label = new JLabel("P1 drew a: ");
@@ -29,12 +32,14 @@ class NewGameWindow extends JFrame {
 		redButton.addActionListener(new NewGameListener());
 		blueButton.addActionListener(new NewGameListener());
 
-		add(instructionLabel);
-		add(p1label);
-		add(p2label);
-		add(movesFirstLabel);
-		add(redButton);
-		add(blueButton);
+		panel.add(instructionLabel);
+		panel.add(p1label);
+		panel.add(p2label);
+		panel.add(movesFirstLabel);
+		panel.add(redButton);
+		panel.add(blueButton);
+
+		add(panel);
 
 		this.setVisible(true);
 	}
@@ -80,9 +85,11 @@ class NewGameWindow extends JFrame {
 		//only question is, how?
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == blueButton) {
+				System.out.println("[New game] Clicked blue");
 				selectedSide = 2;
 			}
 			if (e.getSource() == redButton) {
+				System.out.println("[New game] Clicked red");
 				selectedSide = 1;
 			}
 		}

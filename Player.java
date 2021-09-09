@@ -3,12 +3,9 @@ import java.util.*;
  * Represents a player in the game.
  */
 class Player {
-	Player(int number, String color) {
-		this.number = number;
-		this.color = color;
+	Player() {
 		pieces = new ArrayList<>();
 	}
-
 
 	/**
 	 * Add's a piece to the player's piece list.
@@ -33,16 +30,6 @@ class Player {
 		return alive;
 	}
 
-	public String getColor() {
-		return color;
-	}
-
-	public int getNumber() {
-		return number;
-	}
-
 	private ArrayList<Piece> pieces;
 	private Tile[] denTiles;
-	private int number;
-	private String color;
 }

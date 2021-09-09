@@ -25,15 +25,12 @@ class GameController {
 
 		//Make sure you call this first in the main!!!
 		NewGameWindow ngView = new NewGameWindow();
-		Bag bag = model.getBag();
 
-		bag.shuffleBag();
-
-		Piece p1piece = bag.drawPiece();
-		Piece p2piece = bag.drawPiece();
+		Piece p1piece = model.drawFromBag();
+		Piece p2piece = model.drawFromBag();
 		//bandaid fix to prevent both players from drawing the same piece type
 		if (p1piece.getType().equals(p2piece.getType()))
-			p2piece = bag.drawPiece();
+			p2piece = model.drawFromBag();
 
 		ngView.setPlayerDrawLabel(1, p1piece.getType());
 		ngView.setPlayerDrawLabel(2, p2piece.getType());
@@ -42,8 +39,11 @@ class GameController {
 		ngView.setHigherLabel("Player " + higher);
 
 		//halt code while waiting for user input lmao
-		while (ngView.getSelectedSide() == 0)
-			assert true;
+		while (ngView.getSelectedSide() == 0) {
+				System.out.print(ngView.getSelectedSide()); //figure out how to replace this without flooding the console
+		}
+
+		System.out.println("[Controller] got selected side " + ngView.getSelectedSide());
 
 		//insert pieces into the players' arraylists
 		model.initializePlayers(ngView.getSelectedSide());

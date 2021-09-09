@@ -90,7 +90,7 @@ class LionTigerPiece extends Piece {
       pieces.get(collisionIndex).getCaptured();
       System.out.println("Captured an enemy " + pieces.get(collisionIndex).getType());
       return true;
-    } else {
+  } else if (collision && !capturePiece(pieces.get(collisionIndex))) {
       return false;
     }
 
@@ -117,8 +117,8 @@ class LionTigerPiece extends Piece {
     int movementX = directionX;
     Tile[] terrain = this.getBoard().getTerrain();
     ArrayList<Piece> pieces = this.getBoard().getPieces();
-    MousePiece mouse1;
-    MousePiece mouse2;
+    MousePiece mouse1 = null;
+    MousePiece mouse2 = null;
     //int[][] mousePositions = new int[2][2];
 
     //weirdchamp mouse check method: get the mice from Board

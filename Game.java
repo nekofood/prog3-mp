@@ -20,6 +20,11 @@ class Game {
 		bag = new Bag(board.getPieces());
 		turn = 0;
 		whoseTurn = 0;
+
+		player1 = new Player();
+		player2 = new Player();
+
+		bag.shuffleBag();
 	}
 
 	/**
@@ -62,16 +67,24 @@ class Game {
 		}
 
 		if (firstSide == 1) {
-			for (int i = 0; i < 8; i++)
+			for (int i = 0; i < 8; i++) {
 				firstplayer.initializePiece(board.getPieces().get(i));
-			for (int i = 8; i < 16; i++)
+				System.out.println("[Game] initialized a " + board.getPieces().get(i).getType());
+			}
+			for (int i = 8; i < 16; i++) {
 				secondplayer.initializePiece(board.getPieces().get(i));
+				System.out.println("[Game] initialized a " + board.getPieces().get(i).getType());
+			}
 		}
 		if (firstSide == 2) {
-			for (int i = 0; i < 8; i++)
+			for (int i = 0; i < 8; i++) {
 				secondplayer.initializePiece(board.getPieces().get(i));
-			for (int i = 8; i < 16; i++)
+				System.out.println("[Game] initialized a " + board.getPieces().get(i).getType());
+			}
+			for (int i = 8; i < 16; i++) {
 				firstplayer.initializePiece(board.getPieces().get(i));
+				System.out.println("[Game] initialized a " + board.getPieces().get(i).getType());
+			}
 		}
 	}
 
@@ -88,6 +101,10 @@ class Game {
 			whoseTurn = 2;
 		if (whoseTurn == 2)
 			whoseTurn = 1;
+	}
+
+	public Piece drawFromBag() {
+		return bag.drawPiece();
 	}
 
 	/**
