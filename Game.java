@@ -107,6 +107,10 @@ class Game {
 		return bag.drawPiece();
 	}
 
+	public Piece getFromBoard(int x, int y) {
+		return board.getPieceAt(x, y);
+	}
+
 	/**
 	 * Checks win condition.
 	 * @return no. of winning player, 0 otherwise

@@ -71,6 +71,7 @@ class GameView extends JFrame {
 	 * @param src the destination square
 	 */
 	public void movePiece(JButton src, JButton destination) {
+		System.out.println("[View] Updating piece display");
 		destination.setIcon(src.getIcon());
 		//TODO: water
 		src.setIcon(null);

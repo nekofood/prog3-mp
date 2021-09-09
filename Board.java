@@ -92,8 +92,10 @@ class Board {
 	public Piece getPieceAt(int x, int y) {
 		//this is what i get for not using a 2D array
 		for (int i=0; i < pieces.size(); i++) {
-			if (pieces.get(i).getX() == x && pieces.get(i).getY() == y)
+			if (pieces.get(i).getX() == x && pieces.get(i).getY() == y) {
+				System.out.println("Located " + pieces.get(i));
 				return pieces.get(i);
+			}
 		}
 		return null;
 	}

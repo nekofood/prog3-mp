@@ -92,14 +92,13 @@ class GameController {
 	class BoardListener implements ActionListener {
 		//TODO!!!!!
 		public void actionPerformed(ActionEvent e) {
-			Board gb = model.getBoard();
+			//Board gb = model.getBoard();
 			Piece pc; //piece at the current space being checked
-
 			for (int i = 0; i < 7; i++) {
 				for (int j = 0; j < 9; j++) {
 					//for getting the button x,y
 					if (e.getSource() == view.getBoard()[i][j]) {
-						pc = gb.getPieceAt(j, i);
+						pc = model.getFromBoard(j+1, 9-(i+1));
 						/*check if 1. there's no selected piece,
 								   2. there's a piece at the button clicked
 								   3. the piece is owned by the player who's taking their turn
@@ -107,7 +106,7 @@ class GameController {
 								    */
 						if (spc == null && pc != null && pc.getOwner() == model.getWhoseTurn()) {
 							spc = pc;
-							System.out.println("Piece selected");
+							System.out.println("Piece selected " + spc.toString());
 							view.showValidDir((JButton)e.getSource());
 							return;
 						}
@@ -120,12 +119,14 @@ class GameController {
 							if (isMoveValid(spcX, spcY, j, i)) {
 								if (spc.movePiece(moveToChar(j - spcX, i - spcY))) {
 									view.movePiece(view.getBoard()[spcY][spcX], view.getBoard()[i][j]);
+									System.out.println("Movement");
 									model.advanceTurn();
 								}
 								spc = null;
 								return;
 							}
 							System.out.println("Piece unselected");
+							view.hideValidDir((JButton)e.getSource());
 							spc = null;
 							return;
 						}
