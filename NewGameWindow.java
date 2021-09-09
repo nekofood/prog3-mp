@@ -17,7 +17,7 @@ class NewGameWindow extends JFrame {
 
 		this.setTitle("Animal Chess: New Game");
 		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		this.setLayout(new BoxLayout());
+		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 
 		instructionLabel = new JLabel("Higher piece moves first and gets to pick a side");
 		p1label = new JLabel("P1 drew a: ");

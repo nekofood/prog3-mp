@@ -2,7 +2,7 @@ import java.util.*;
 /**
 * Represents a Tiger or Lion.
 */
-public class LionTigerPiece extends Piece {
+class LionTigerPiece extends Piece {
 
   /**
   * This constructor creates a Lion/Tiger Piece object with a type, owner, and position.
