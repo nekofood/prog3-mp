@@ -21,8 +21,8 @@ class Game {
 		turn = 0;
 		whoseTurn = 0;
 
-		player1 = new Player();
-		player2 = new Player();
+		player1 = new Player(1);
+		player2 = new Player(2);
 
 		bag.shuffleBag();
 	}

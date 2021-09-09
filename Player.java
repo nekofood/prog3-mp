@@ -3,8 +3,9 @@ import java.util.*;
  * Represents a player in the game.
  */
 class Player {
-	Player() {
+	Player(int number) {
 		pieces = new ArrayList<>();
+		this.number = number;
 	}
 
 	/**
@@ -16,6 +17,10 @@ class Player {
 
 	public ArrayList<Piece> getPieces() {
 		return pieces;
+	}
+
+	public int getNumber() {
+		return number;
 	}
 
 	/**
@@ -32,4 +37,5 @@ class Player {
 
 	private ArrayList<Piece> pieces;
 	private Tile[] denTiles;
+	private int number;
 }

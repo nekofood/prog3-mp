@@ -119,31 +119,63 @@ class GameView extends JFrame {
 	 * Sets the button color to green when valid direction
 	 * @param btn the button that is a valid direction
 	 */
-	public void showValidDir(JButton btn)
-    	{
-        	btn.setBackground(Color.green);
-    	}
+	public void showValidDir(JButton btn) {
+		int i = 1;
+		int j = 1;
+		//get surrounding buttons
+    	for (i = 1; i < 7; i++) {
+			for (j = 1; j < 9; j++) {
+				if (gameBoard[i][j] == btn) {
+					break;
+				}
+			}
+			break;
+		}
+		//i and j are the button's y,x
+		if (i + 1 < 7)
+			gameBoard[i+1][j].setBackground(Color.green);
+		if (i - 1 >= 0)
+			gameBoard[i-1][j].setBackground(Color.green);
+		if (j + 1 < 9)
+			gameBoard[i][j+1].setBackground(Color.green);
+		if (j - 1 >= 0)
+			gameBoard[i][j-1].setBackground(Color.green);
+    }
 
 	/**
 	 * Resets the button colors to white
 	 */
-	public void resetBoardColor()
-	{
-		for (int i = 0; i < 7; i++) {
-			for (int j = 0; j < 9; j++) {
-				gameBoard[i][j].setBackground(Color.white);
+	public void hideValidDir(JButton btn) {
+		int i = 1;
+		int j = 1;
+		//get surrounding buttons
+    	for (i = 1; i < 7; i++) {
+			for (j = 1; j < 9; j++) {
+				if (gameBoard[i][j] == btn) {
+					break;
+				}
 			}
+			break;
 		}
+		//i and j are the button's y,x
+		if (i + 1 < 7)
+			gameBoard[i+1][j].setBackground(Color.white);
+		if (i - 1 >= 0)
+			gameBoard[i-1][j].setBackground(Color.white);
+		if (j + 1 < 9)
+			gameBoard[i][j+1].setBackground(Color.white);
+		if (j - 1 >= 0)
+			gameBoard[i][j-1].setBackground(Color.white);
 	}
 
 	/**
 	 * Sets the label to the color of the current player's turn
 	 * @param player the current player
 	 */
-    	public void setPlayerTurninfo(Player player)
-    	{
-        	turn.setText(player.getColor()+ "'s Turn");
-    	}
+	public void setPlayerTurninfo(Player player)
+	{
+    	turn.setText(player.getNumber() + "'s Turn");
+	}
 
 	/**
 	 * Sets the label to the winner
@@ -151,7 +183,7 @@ class GameView extends JFrame {
 	 */
 	public void setWinnerInfo(Player player)
 	{
-		turn.setText(player.getColor() + " Wins!");
+		turn.setText(player.getNumber() + " Wins!");
 	}
 
 	/**

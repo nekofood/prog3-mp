@@ -1,4 +1,5 @@
 import java.awt.event.*;
+import javax.swing.*;
 
 class GameController {
 	private GameView view;
@@ -35,7 +36,7 @@ class GameController {
 		ngView.setPlayerDrawLabel(1, p1piece.getType());
 		ngView.setPlayerDrawLabel(2, p2piece.getType());
 
-		int higher = model.comparePieces(p1piece.getRank(), p2piece.getRank());
+		int higher = model.comparePieces(p2piece.getRank(), p1piece.getRank());
 		ngView.setHigherLabel("Player " + higher);
 
 		//halt code while waiting for user input lmao
@@ -106,7 +107,8 @@ class GameController {
 								    */
 						if (spc == null && pc != null && pc.getOwner() == model.getWhoseTurn()) {
 							spc = pc;
-							//TODO: highlight movement cross
+							System.out.println("Piece selected");
+							view.showValidDir((JButton)e.getSource());
 							return;
 						}
 						/* if a piece IS selected, time to handle movement! */
@@ -123,6 +125,7 @@ class GameController {
 								spc = null;
 								return;
 							}
+							System.out.println("Piece unselected");
 							spc = null;
 							return;
 						}
