@@ -1,3 +1,4 @@
+import java.util.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -11,8 +12,10 @@ class GameView extends JFrame {
 
 	GameView() {
 		gameBoard = new JButton[7][9];
-		tileIcons = new ImageIcon()[5];
-		pieceIcons = new ImageIcon()[16];
+		tileIcons = new ImageIcon[5];
+		pieceIcons = new ImageIcon[16];
+    	initIcons();
+		initTerrain();
 
 		setTitle("Animal Chess");
 		setSize(760, 650); //piece icons = 80px
@@ -35,7 +38,6 @@ class GameView extends JFrame {
 
     	add(top, BorderLayout.NORTH);
     	add(center, BorderLayout.CENTER);
-    	initIcons();
 		setVisible(true);
 	}
 
@@ -78,19 +80,6 @@ class GameView extends JFrame {
 	}
 
 	/**
-	 * Transfers the visuals from one square to another.
-	 * The source square is cleared in the process.
-	 * @param src the source square
-	 * @param src the destination square
-	 */
-	public void movePiece(JButton src, JButton destination) {
-		System.out.println("[View] Updating piece display");
-		destination.setIcon(src.getIcon());
-		//TODO: water and lions
-		src.setIcon(null);
-	}
-
-	/**
 	 * Wipes the board, then redraws everything according to their x,y positions.
 	 */
 	public void drawBoard(ArrayList<Piece> pieces, Tile[] tiles) {
@@ -102,7 +91,13 @@ class GameView extends JFrame {
 		}
 
 		//start with tiles
-		for (int i = 0; i)
+		for (int i = 0; i < tiles.length; i++) {
+			gameBoard[7 - tiles[i].getY()][tiles[i].getX() - 1].setIcon(tileIcons[tiles[i].getIconIndex()]);
+		}
+		//piece rendering
+		for (int j = 0; j < pieces.size(); j++) {
+			gameBoard[7 - pieces.get(j).getY()][pieces.get(j).getX() - 1].setIcon(pieceIcons[pieces.get(j).getIconIndex()]);
+		}
 	}
 
 	public JButton[][] getBoard() {

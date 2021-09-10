@@ -1,9 +1,16 @@
 import java.util.*;
 
 public class MousePiece extends Piece {
-
-  MousePiece(int x, int y, int o, Board b) {
-    super("Mouse", x, y, o, 1, b);
+/**
+	 * This constructor creates a Mouse piece.
+	 * @param x starting x-position
+	 * @param y starting y-position
+	 * @param owner player that owns this piece
+	 * @param b the board this piece belongs in
+     * @param ii the index of its icon in the piece/tile icon array
+	 */
+  MousePiece(int x, int y, int o, Board b, int ii) {
+    super("Mouse", x, y, o, 1, b, ii);
   }
 
   /**

@@ -11,9 +11,10 @@ class LionTigerPiece extends Piece {
   * @param y y-position
   * @param owner Piece owner (0 = none, 1 = player 1, 2 = player 2)
   * @param b Board
+  * @param i index of icon in GUI icons array
   */
-  LionTigerPiece(String t, int x, int y, int o, int r, Board b) {
-    super(t, x, y, o, r, b);
+  LionTigerPiece(String t, int x, int y, int o, int r, Board b, int ii) {
+    super(t, x, y, o, r, b, ii);
   }
 
   /**

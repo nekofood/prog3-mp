@@ -16,6 +16,7 @@ class GameController {
 				v.addButtonListener(v.getBoard()[i][j], new BoardListener());
 			}
 		}
+		view.drawBoard(model.getBoard().getPieces(), model.getBoard().getTerrain());
 	}
 
 	/**
@@ -124,15 +125,10 @@ class GameController {
 							//yeah this sucks
 							if (isMoveValid(spcX, spcY, j+1, 9-(i+2))) {
 								if (model.movePiece(spc, moveToChar((j+1) - spcX, (9-(i+2)) - spcY))) {
-									//TODO: handle lion/tiger jump on gui
-									if (spc instanceof LionTigerPiece) {
-										LionTigerPiece lspc = (LionTigerPiece)spc;
-										view.movePiece(view.getBoard()[7-spcY][spcX-1], view.getBoard()[(7-spcY)+lspc.getLastJumpLength()][(spcX-1)+lspc.getLastJumpLength()]);
-									} else
-										view.movePiece(view.getBoard()[7-spcY][spcX-1], view.getBoard()[i][j]);
 									System.out.println("Movement");
 									model.advanceTurn();
 									view.setPlayerTurninfo(model.getWhoseTurn());
+									view.drawBoard(model.getBoard().getPieces(), model.getBoard().getTerrain());
 								}
 							}
 							System.out.println("Piece unselected ");
