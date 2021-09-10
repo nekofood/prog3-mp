@@ -3,7 +3,7 @@ import java.util.*;
 * Represents a Tiger or Lion.
 */
 class LionTigerPiece extends Piece {
-
+	private int lastJumpLength; //for gui purposes
   /**
   * This constructor creates a Lion/Tiger Piece object with a type, owner, and position.
   * @param t Tile type
@@ -99,6 +99,7 @@ class LionTigerPiece extends Piece {
     this.x += checkX;
     this.y += checkY;
 
+
     return true;
   }
 
@@ -134,6 +135,8 @@ class LionTigerPiece extends Piece {
 	    {mouse2.getX(), mouse2.getY()}
     };
 
+	System.out.println(mousePositions);
+
     boolean doneChecking = false;
 
     while (!doneChecking) {
@@ -142,18 +145,18 @@ class LionTigerPiece extends Piece {
         if (terrain[i].getType().equals("Water")) {
           //checking along the x-axis
           if (movementX != 0 && this.getX() + movementX == terrain[i].getX()) {
-	    //if there is a maus along the way then return 0
-	    if (this.getX() + movementX == mousePositions[0][0] || this.getX() + movementX == mousePositions[1][0])
-		    return 0;
+		    //if there is a maus along the way then return 0
+		    if (this.getX() + movementX == mousePositions[0][0] || this.getX() + movementX == mousePositions[1][0])
+	    		return 0;
             movementX += directionX;
             doneChecking = false;
             break;
           }
           //checking along the y-axis
           if (movementY != 0 && this.getY() + movementY == terrain[i].getY()) {
-	    //if theres mouse return 0
-	    if (this.getY() + movementY == mousePositions[0][1] || this.getY() + movementY == mousePositions[1][1])
-		    return 0;
+	    	//if theres mouse return 0
+	    	if (this.getY() + movementY == mousePositions[0][1] || this.getY() + movementY == mousePositions[1][1])
+		    	return 0;
             movementY += directionY;
             doneChecking = false;
             break;
@@ -162,7 +165,11 @@ class LionTigerPiece extends Piece {
       }
     }
 
-
+  lastJumpLength = movementX+movementY;
   return movementX + movementY;
+  }
+
+  public int getLastJumpLength() {
+	  return lastJumpLength;
   }
 }

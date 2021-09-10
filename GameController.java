@@ -48,6 +48,8 @@ class GameController {
 		model.initializePlayers(ngView.getSelectedSide()); //initializing players
 		System.out.println("[Game] first turn goes to " + model.getWhoseTurn());
 
+		view.setPlayerTurninfo(model.getWhoseTurn());
+
 		ngView.closeWindow();
 		view.enableAllButtons();
 	}
@@ -101,8 +103,8 @@ class GameController {
 					//for getting the button x,y
 					if (e.getSource() == view.getBoard()[i][j]) {
 						System.out.println("Click detected at (view array) " + i + ", " + j);
-						System.out.println("Converted: " + (j+1) + ", " + (9-(i+2)));
-						pc = model.getFromBoard(j+1, 9-(i+2));
+						System.out.println("Converted: " + (j+1) + ", " + (7-i));
+						pc = model.getFromBoard(j+1, 7-i);
 						/*check if 1. there's no selected piece,
 								   2. there's a piece at the button clicked
 								   3. the piece is owned by the player who's taking their turn
@@ -122,9 +124,15 @@ class GameController {
 							//yeah this sucks
 							if (isMoveValid(spcX, spcY, j+1, 9-(i+2))) {
 								if (model.movePiece(spc, moveToChar((j+1) - spcX, (9-(i+2)) - spcY))) {
-									view.movePiece(view.getBoard()[7-spcY][spcX-1], view.getBoard()[i][j]);
+									//TODO: handle lion/tiger jump on gui
+									if (spc instanceof LionTigerPiece) {
+										LionTigerPiece lspc = (LionTigerPiece)spc;
+										view.movePiece(view.getBoard()[7-spcY][spcX-1], view.getBoard()[(7-spcY)+lspc.getLastJumpLength()][(spcX-1)+lspc.getLastJumpLength()]);
+									} else
+										view.movePiece(view.getBoard()[7-spcY][spcX-1], view.getBoard()[i][j]);
 									System.out.println("Movement");
 									model.advanceTurn();
+									view.setPlayerTurninfo(model.getWhoseTurn());
 								}
 							}
 							System.out.println("Piece unselected ");

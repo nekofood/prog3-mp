@@ -65,8 +65,8 @@ public class MousePiece extends Piece {
     if (collision && capturePiece(pieces.get(collisionIndex))) {
       this.x += checkX;
       this.y += checkY;
-      pieces.get(collisionIndex).getCaptured();
       System.out.println("Captured an enemy " + pieces.get(collisionIndex).getType());
+      pieces.get(collisionIndex).getCaptured();
       return true;
     }
 
@@ -98,7 +98,7 @@ public class MousePiece extends Piece {
     if (target.getTileUnder() != null && target.getTileUnder().getType().equals("Water") && this.getTileUnder() == null)
     	return false;
     //prevent capturing water -> land
-    if (target.getTileUnder() == null && this.getTileUnder().getType().equals("Water"))
+    if (target.getTileUnder() != null && this.getTileUnder().getType().equals("Water"))
 		return false;
     if (target.getTileUnder() != null && target.getTileUnder().getType().equals("Trap") && target.getTileUnder().getOwner() == this.getOwner())
     	return true;

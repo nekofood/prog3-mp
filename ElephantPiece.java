@@ -4,9 +4,11 @@ public class ElephantPiece extends Piece {
 	 * @param x starting x-position
 	 * @param y starting y-position
 	 * @param owner player that owns this piece
+	 * @param b the board this piece belongs in
+     * @param ii the index of its icon in the piece/tile icon array
 	 */
-	ElephantPiece(int x, int y, int owner, Board b) {
-		super("Elephant", x, y, owner, 8, b);
+	ElephantPiece(int x, int y, int owner, Board b, int ii) {
+		super("Elephant", x, y, owner, 8, b, ii);
 	}
 
 

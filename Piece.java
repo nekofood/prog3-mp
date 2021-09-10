@@ -12,9 +12,10 @@ public class Piece extends Tile {
   * @param o Piece owner (0 = none, 1 = player 1, 2 = player 2)
   * @param r Piece rank
   * @param board The board this piece is on
+  * @param ii the index of its icon in the piece/tile icon array
   */
-  Piece(String t, int x, int y, int o, int r, Board board) {
-    super(t, x, y, o, board);
+  Piece(String t, int x, int y, int o, int r, Board board, int ii) {
+    super(t, x, y, o, board, ii);
     rank = r;
   }
   /**

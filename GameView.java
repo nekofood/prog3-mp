@@ -6,9 +6,13 @@ import javax.swing.event.*;
 class GameView extends JFrame {
 	private JButton[][] gameBoard;
 	private JLabel turn;
+	private ImageIcon[] tileIcons;
+	private ImageIcon[] pieceIcons;
 
 	GameView() {
 		gameBoard = new JButton[7][9];
+		tileIcons = new ImageIcon()[5];
+		pieceIcons = new ImageIcon()[16];
 
 		setTitle("Animal Chess");
 		setSize(760, 650); //piece icons = 80px
@@ -36,31 +40,40 @@ class GameView extends JFrame {
 	}
 
 	/**
-	 * Initializes the icons on each button.
+	 * Initializes River, Den and Trap icons
+	 */
+	private void initTerrain() {
+		tileIcons[0] = new ImageIcon("img/River.png");
+		tileIcons[1] = new ImageIcon("img/den_red.png");
+		tileIcons[2] = new ImageIcon("img/trap_red.png");
+		tileIcons[3] = new ImageIcon("img/den_blue.png");
+		tileIcons[4] = new ImageIcon("img/trap_blue.png");
+	}
+
+	/**
+	 * Initializes the array of piece icons.
 	 */
 	public void initIcons() {
 
-		initTerrain();
-
 		//red pieces
-		gameBoard[0][0].setIcon(new ImageIcon("img/tiger_red.png"));
-		gameBoard[0][2].setIcon(new ImageIcon("img/elephant_red.png"));
-		gameBoard[1][1].setIcon(new ImageIcon("img/cat_red.png"));
-		gameBoard[2][2].setIcon(new ImageIcon("img/wolf_red.png"));
-		gameBoard[4][2].setIcon(new ImageIcon("img/leopard_red.png"));
-		gameBoard[5][1].setIcon(new ImageIcon("img/dog_red.png"));
-		gameBoard[6][0].setIcon(new ImageIcon("img/lion_red.png"));
-		gameBoard[6][2].setIcon(new ImageIcon("img/mouse_red.png"));
+		pieceIcons[0] = new ImageIcon("img/tiger_red.png");
+		pieceIcons[1] = new ImageIcon("img/elephant_red.png");
+		pieceIcons[2] = new ImageIcon("img/cat_red.png");
+		pieceIcons[3] = new ImageIcon("img/wolf_red.png");
+		pieceIcons[4] = new ImageIcon("img/leopard_red.png");
+		pieceIcons[5] = new ImageIcon("img/dog_red.png");
+		pieceIcons[6] = new ImageIcon("img/lion_red.png");
+		pieceIcons[7] = new ImageIcon("img/mouse_red.png");
 
 		//blue pieces
-		gameBoard[6][8].setIcon(new ImageIcon("img/tiger_blue.png"));
-		gameBoard[6][6].setIcon(new ImageIcon("img/elephant_blue.png"));
-		gameBoard[5][7].setIcon(new ImageIcon("img/cat_blue.png"));
-		gameBoard[4][6].setIcon(new ImageIcon("img/wolf_blue.png"));
-		gameBoard[2][6].setIcon(new ImageIcon("img/leopard_blue.png"));
-		gameBoard[1][7].setIcon(new ImageIcon("img/dog_blue.png"));
-		gameBoard[0][8].setIcon(new ImageIcon("img/lion_blue.png"));
-		gameBoard[0][6].setIcon(new ImageIcon("img/mouse_blue.png"));
+		pieceIcons[8] = new ImageIcon("img/tiger_blue.png");
+		pieceIcons[9] = new ImageIcon("img/elephant_blue.png");
+		pieceIcons[10] = new ImageIcon("img/cat_blue.png");
+		pieceIcons[11] = new ImageIcon("img/wolf_blue.png");
+		pieceIcons[12] = new ImageIcon("img/leopard_blue.png");
+		pieceIcons[13] = new ImageIcon("img/dog_blue.png");
+		pieceIcons[14] = new ImageIcon("img/lion_blue.png");
+		pieceIcons[15] = new ImageIcon("img/mouse_blue.png");
 
 	}
 
@@ -73,8 +86,23 @@ class GameView extends JFrame {
 	public void movePiece(JButton src, JButton destination) {
 		System.out.println("[View] Updating piece display");
 		destination.setIcon(src.getIcon());
-		//TODO: water
+		//TODO: water and lions
 		src.setIcon(null);
+	}
+
+	/**
+	 * Wipes the board, then redraws everything according to their x,y positions.
+	 */
+	public void drawBoard(ArrayList<Piece> pieces, Tile[] tiles) {
+		//wipe the board
+		for (int e = 0; e < 7; e++) {
+			for (int f = 0; f < 9; f++) {
+				gameBoard[e][f].setIcon(null);
+			}
+		}
+
+		//start with tiles
+		for (int i = 0; i)
 	}
 
 	public JButton[][] getBoard() {
@@ -84,37 +112,6 @@ class GameView extends JFrame {
 	public void addButtonListener(JButton b, ActionListener al) {
 		b.addActionListener(al);
 	}
-
-	/**
-	 * Initializes River, Den and Trap icons in their positions
-	 */
-	private void initTerrain()
-    	{
-		//Rivers
-        	for (int i = 5; i>=4; i--) {
-            		for (int j = 3; j<=5;j++) {
-                		gameBoard[i][j].setIcon(new ImageIcon("img/River.png"));
-            		}
-        	}
-
-        	for (int i = 2; i>=1; i--) {
-            		for (int j = 3; j<=5;j++) {
-                		gameBoard[i][j].setIcon(new ImageIcon("img/River.png"));
-            		}
-        	}
-
-		//left side terrains
-        	gameBoard[2][0].setIcon(new ImageIcon("img/trap_red.png"));
-        	gameBoard[3][1].setIcon(new ImageIcon("img/trap_red.png"));
-        	gameBoard[4][0].setIcon(new ImageIcon("img/trap_red.png"));
-        	gameBoard[3][0].setIcon(new ImageIcon("img/den_red.png"));
-
-        	//right side terrains
-        	gameBoard[2][8].setIcon(new ImageIcon("img/trap_blue.png"));
-        	gameBoard[3][7].setIcon(new ImageIcon("img/trap_blue.png"));
-        	gameBoard[4][8].setIcon(new ImageIcon("img/trap_blue.png"));
-        	gameBoard[3][8].setIcon(new ImageIcon("img/den_blue.png"));
-    	}
 
 	/**
 	 * Sets the button color to green when valid direction
@@ -174,9 +171,12 @@ class GameView extends JFrame {
 	 * Sets the label to the color of the current player's turn
 	 * @param player the current player
 	 */
-	public void setPlayerTurninfo(String s)
+	public void setPlayerTurninfo(int t)
 	{
-    	turn.setText(s);
+		if (t == 1)
+			turn.setText("Red player's turn");
+		if (t == 2)
+			turn.setText("Blue player's turn");
 	}
 
 	/**

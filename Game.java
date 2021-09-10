@@ -67,29 +67,25 @@ class Game {
 		}
 
 		if (firstSide == 1) {
-			firstplayer.setColor("Red");
-			secondplayer.setColor("Blue");
 			whoseTurn = 1;
 			for (int i = 0; i < 8; i++) {
 				firstplayer.initializePiece(board.getPieces().get(i));
-				System.out.println("[Game] initialized a " + board.getPieces().get(i).getType());
+				System.out.println("[Game] initialized a " + board.getPieces().get(i));
 			}
 			for (int i = 8; i < 16; i++) {
 				secondplayer.initializePiece(board.getPieces().get(i));
-				System.out.println("[Game] initialized a " + board.getPieces().get(i).getType());
+				System.out.println("[Game] initialized a " + board.getPieces().get(i));
 			}
 		}
 		if (firstSide == 2) {
-			firstplayer.setColor("Blue");
-			secondplayer.setColor("Red");
 			whoseTurn = 2;
 			for (int i = 0; i < 8; i++) {
 				secondplayer.initializePiece(board.getPieces().get(i));
-				System.out.println("[Game] initialized a " + board.getPieces().get(i).getType());
+				System.out.println("[Game] initialized a " + board.getPieces().get(i));
 			}
 			for (int i = 8; i < 16; i++) {
 				firstplayer.initializePiece(board.getPieces().get(i));
-				System.out.println("[Game] initialized a " + board.getPieces().get(i).getType());
+				System.out.println("[Game] initialized a " + board.getPieces().get(i));
 			}
 		}
 	}
@@ -104,11 +100,13 @@ class Game {
 	public void advanceTurn() {
 		//TODO: this isn't properly passing the turn to the other player?
 		++turn;
-		if (whoseTurn == 1)
+		System.out.println("Turn advanced (now turn " + turn + ")");
+		if (whoseTurn == 1) {
 			whoseTurn = 2;
+			return;
+		}
 		if (whoseTurn == 2)
 			whoseTurn = 1;
-		System.out.println("Turn advanced (now turn " + turn + ")");
 	}
 
 	public Piece drawFromBag() {
