@@ -109,32 +109,37 @@ class GameView extends JFrame {
 	}
 
 	/**
-	 * Sets the button color to green when valid direction
-	 * @param btn the button that is a valid direction
+	 * Sets the button color to green in a cross from an x,y point.
+	 * Used to show valid movement positions.
+	 * @param x the x of the point
+	 * @param y the y of the point
 	 */
 	public void showValidDir(int x, int y) {
 		if (y + 1 < 7)
-			gameBoard[i+1][j].setBackground(Color.green);
+			gameBoard[y+1][x].setBackground(Color.green);
 		if (y - 1 >= 0)
-			gameBoard[i-1][j].setBackground(Color.green);
+			gameBoard[y-1][x].setBackground(Color.green);
 		if (x + 1 < 9)
-			gameBoard[i][j+1].setBackground(Color.green);
+			gameBoard[y][x+1].setBackground(Color.green);
 		if (x - 1 >= 0)
-			gameBoard[i][j-1].setBackground(Color.green);
+			gameBoard[y][x-1].setBackground(Color.green);
     }
 
 	/**
-	 * Resets the button colors to white
+	 * Resets the button colors to white in a cross from an x,y point.
+	 * @param x the x of the point
+	 * @param y the y of the point
 	 */
 	public void hideValidDir(int x, int y) {
+		System.out.println("hidden " + x + ", " + y);
 		if (y + 1 < 7)
-			gameBoard[i+1][j].setBackground(Color.white);
+			gameBoard[y+1][x].setBackground(Color.white);
 		if (y - 1 >= 0)
-			gameBoard[i-1][j].setBackground(Color.white);
+			gameBoard[y-1][x].setBackground(Color.white);
 		if (x + 1 < 9)
-			gameBoard[i][j+1].setBackground(Color.white);
+			gameBoard[y][x+1].setBackground(Color.white);
 		if (x - 1 >= 0)
-			gameBoard[i][j-1].setBackground(Color.white);
+			gameBoard[y][x-1].setBackground(Color.white);
 	}
 
 	/**
@@ -151,11 +156,11 @@ class GameView extends JFrame {
 
 	/**
 	 * Sets the label to the winner
-	 * @param player the player who wins
+	 * @param player text describing the player who wins
 	 */
-	public void setWinnerInfo(Player player)
+	public void setWinnerInfo(String player)
 	{
-		turn.setText(player.getNumber() + " Wins!");
+		turn.setText(player + " wins!");
 	}
 
 	/**

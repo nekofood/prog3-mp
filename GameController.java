@@ -75,6 +75,14 @@ class GameController {
 		return validX ^ validY;
 	}
 
+	public void endGame() {
+		view.disableAllButtons();
+		if (model.checkEnd() == 1)
+			view.setWinnerInfo("Red player");
+		if (model.checkEnd() == 2)
+			view.setWinnerInfo("Blue player");
+	}
+
 	/**
 	 * Converts x,y movement to NSEW chars.
 	 * Please input within the range of -1 <= x <= 1.
@@ -114,7 +122,7 @@ class GameController {
 						if (spc == null && pc != null && pc.getOwner() == model.getWhoseTurn()) {
 							spc = pc;
 							System.out.println("Piece selected " + spc.toString());
-							view.showValidDir(j, i);
+							//view.showValidDir(j, i);
 							return;
 						}
 						/* if a piece IS selected, time to handle movement! */
@@ -123,16 +131,19 @@ class GameController {
 							int spcY = spc.getY();
 							//check if the piece is orthogonal to the space just clicked
 							//yeah this sucks
-							if (isMoveValid(spcX, spcY, j+1, 9-(i+2))) {
+							if (isMoveValid(spcX, spcY, j+1, 7-i)) {
 								if (model.movePiece(spc, moveToChar((j+1) - spcX, (7-i) - spcY))) {
 									System.out.println("Movement");
 									model.advanceTurn();
 									view.setPlayerTurninfo(model.getWhoseTurn());
 									view.drawBoard(model.getBoard().getPieces(), model.getBoard().getTerrain());
+									if (model.checkEnd() != 0) {
+										endGame();
+									}
 								}
 							}
 							System.out.println("Piece unselected ");
-							view.hideValidDir(7-spcY, spcX-1);
+							//view.hideValidDir(7-spcY, spcX-1);
 							spc = null;
 							return;
 						}
