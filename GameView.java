@@ -174,9 +174,9 @@ class GameView extends JFrame {
 	 * Sets the label to the color of the current player's turn
 	 * @param player the current player
 	 */
-	public void setPlayerTurninfo(Player player)
+	public void setPlayerTurninfo(String s)
 	{
-    	turn.setText("Player " + player.getNumber() + "'s Turn");
+    	turn.setText(s);
 	}
 
 	/**

@@ -67,6 +67,8 @@ class Game {
 		}
 
 		if (firstSide == 1) {
+			firstplayer.setColor("Red");
+			secondplayer.setColor("Blue");
 			whoseTurn = 1;
 			for (int i = 0; i < 8; i++) {
 				firstplayer.initializePiece(board.getPieces().get(i));
@@ -78,6 +80,8 @@ class Game {
 			}
 		}
 		if (firstSide == 2) {
+			firstplayer.setColor("Blue");
+			secondplayer.setColor("Red");
 			whoseTurn = 2;
 			for (int i = 0; i < 8; i++) {
 				secondplayer.initializePiece(board.getPieces().get(i));
