@@ -28,7 +28,7 @@ class Game {
 	}
 
 	/**
-	 * Compares the ranks of two pieces (for new game) and sets the first player accordingly.
+	 * Compares the ranks of two pieces (for new game).
 	 * @param p1 p1's piece rank
 	 * @param p2 p2's piece rank
 	 * @return the player who drew the higher piece
@@ -67,6 +67,7 @@ class Game {
 		}
 
 		if (firstSide == 1) {
+			whoseTurn = 1;
 			for (int i = 0; i < 8; i++) {
 				firstplayer.initializePiece(board.getPieces().get(i));
 				System.out.println("[Game] initialized a " + board.getPieces().get(i).getType());
@@ -77,6 +78,7 @@ class Game {
 			}
 		}
 		if (firstSide == 2) {
+			whoseTurn = 2;
 			for (int i = 0; i < 8; i++) {
 				secondplayer.initializePiece(board.getPieces().get(i));
 				System.out.println("[Game] initialized a " + board.getPieces().get(i).getType());
@@ -96,11 +98,13 @@ class Game {
 	}
 
 	public void advanceTurn() {
+		//TODO: this isn't properly passing the turn to the other player?
 		++turn;
 		if (whoseTurn == 1)
 			whoseTurn = 2;
 		if (whoseTurn == 2)
 			whoseTurn = 1;
+		System.out.println("Turn advanced (now turn " + turn + ")");
 	}
 
 	public Piece drawFromBag() {

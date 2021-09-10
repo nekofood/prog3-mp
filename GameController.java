@@ -36,7 +36,7 @@ class GameController {
 		ngView.setPlayerDrawLabel(1, p1piece.getType());
 		ngView.setPlayerDrawLabel(2, p2piece.getType());
 
-		int higher = model.comparePieces(p2piece.getRank(), p1piece.getRank());
+		int higher = model.comparePieces(p1piece.getRank(), p2piece.getRank());
 		ngView.setHigherLabel("Player " + higher);
 
 		//halt code while waiting for user input lmao
@@ -45,17 +45,16 @@ class GameController {
 		}
 
 		System.out.println("[Controller] got selected side " + ngView.getSelectedSide());
-
-		//insert pieces into the players' arraylists
-		model.initializePlayers(ngView.getSelectedSide());
+		model.initializePlayers(ngView.getSelectedSide()); //initializing players
+		System.out.println("[Game] first turn goes to " + model.getWhoseTurn());
 
 		ngView.closeWindow();
 		view.enableAllButtons();
 	}
 
 	/**
-	 * Checks if a given space is orthogonal to another. Also checks if there's anything in the way.
-	 * Used to check if a movement click is valid.
+	 * Checks if a given space is orthogonal to another.
+	 * Used to check if a movement click is a valid direction.
 	 * @param srcX the piece's X
 	 * @param srcY the piece's Y
 	 * @param destX the X-value that was clicked on
@@ -63,11 +62,14 @@ class GameController {
 	 * @return true if the x,y that was clicked is right next to the source x,y
 	 */
 	public boolean isMoveValid(int srcX, int srcY, int destX, int destY) {
-		if ((srcX + destX == 1 || srcX + destX == -1) && (srcY + destY == 1 || srcY + destY == 1))
-			return true;
-		if (model.getBoard().getPieceAt(destX,destY) != null && model.getBoard().getPieceAt(destX,destY).getOwner() == model.getWhoseTurn())
-			return false;
-		return false;
+		boolean validX = false;
+		boolean validY = false;
+		System.out.println("Checking valid movement from " + srcX + ", " + srcY + " to " + destX + ", " + destY);
+		if (srcX + 1 == destX || srcX - 1 == destX)
+			validX = true;
+		if (srcY + 1 == destY || srcY - 1 == destY)
+			validY = true;
+		return validX ^ validY;
 	}
 
 	/**
@@ -98,7 +100,9 @@ class GameController {
 				for (int j = 0; j < 9; j++) {
 					//for getting the button x,y
 					if (e.getSource() == view.getBoard()[i][j]) {
-						pc = model.getFromBoard(j+1, 9-(i+1));
+						System.out.println("Click detected at (view array) " + i + ", " + j);
+						System.out.println("Converted: " + (j+1) + ", " + (9-(i+2)));
+						pc = model.getFromBoard(j+1, 9-(i+2));
 						/*check if 1. there's no selected piece,
 								   2. there's a piece at the button clicked
 								   3. the piece is owned by the player who's taking their turn
@@ -107,7 +111,7 @@ class GameController {
 						if (spc == null && pc != null && pc.getOwner() == model.getWhoseTurn()) {
 							spc = pc;
 							System.out.println("Piece selected " + spc.toString());
-							view.showValidDir((JButton)e.getSource());
+							//view.showValidDir((JButton)e.getSource());
 							return;
 						}
 						/* if a piece IS selected, time to handle movement! */
@@ -116,17 +120,15 @@ class GameController {
 							int spcY = spc.getY();
 							//check if the piece is orthogonal to the space just clicked
 							//yeah this sucks
-							if (isMoveValid(spcX, spcY, j, i)) {
-								if (spc.movePiece(moveToChar(j - spcX, i - spcY))) {
-									view.movePiece(view.getBoard()[spcY][spcX], view.getBoard()[i][j]);
+							if (isMoveValid(spcX, spcY, j+1, 9-(i+2))) {
+								if (model.movePiece(spc, moveToChar((j+1) - spcX, (9-(i+2)) - spcY))) {
+									view.movePiece(view.getBoard()[7-spcY][spcX-1], view.getBoard()[i][j]);
 									System.out.println("Movement");
 									model.advanceTurn();
 								}
-								spc = null;
-								return;
 							}
-							System.out.println("Piece unselected");
-							view.hideValidDir((JButton)e.getSource());
+							System.out.println("Piece unselected ");
+							//view.hideValidDir((JButton)e.getSource());
 							spc = null;
 							return;
 						}

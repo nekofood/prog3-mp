@@ -160,7 +160,7 @@ public class Piece extends Tile {
   }
 
   public String toString() {
-	return this.getType() + " at " + this.getX() + ", " + this.getY();
+	return this.getOwner() + " " + this.getType() + " at " + this.getX() + ", " + this.getY();
   }
 
   protected int rank;

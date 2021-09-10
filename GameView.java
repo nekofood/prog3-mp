@@ -121,6 +121,7 @@ class GameView extends JFrame {
 	 * @param btn the button that is a valid direction
 	 */
 	public void showValidDir(JButton btn) {
+		//TODO: this along with hideValidDir() is causing errors for some reason, will come back to later
 		int i = 1;
 		int j = 1;
 		//get surrounding buttons
@@ -175,7 +176,7 @@ class GameView extends JFrame {
 	 */
 	public void setPlayerTurninfo(Player player)
 	{
-    	turn.setText(player.getNumber() + "'s Turn");
+    	turn.setText("Player " + player.getNumber() + "'s Turn");
 	}
 
 	/**

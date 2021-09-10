@@ -5,6 +5,7 @@ import java.util.*;
 class Player {
 	Player(int number) {
 		pieces = new ArrayList<>();
+		color = "";
 		this.number = number;
 	}
 
@@ -23,6 +24,10 @@ class Player {
 		return number;
 	}
 
+	public void setColor(String s) {
+			color = s;
+	}
+
 	/**
 	 * Returns the amount of living pieces the player has left.
 	 */
@@ -38,4 +43,5 @@ class Player {
 	private ArrayList<Piece> pieces;
 	private Tile[] denTiles;
 	private int number;
+	private String color;
 }
