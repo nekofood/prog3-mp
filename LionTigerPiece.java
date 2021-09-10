@@ -3,7 +3,6 @@ import java.util.*;
 * Represents a Tiger or Lion.
 */
 class LionTigerPiece extends Piece {
-	private int lastJumpLength; //for gui purposes
   /**
   * This constructor creates a Lion/Tiger Piece object with a type, owner, and position.
   * @param t Tile type
@@ -62,16 +61,20 @@ class LionTigerPiece extends Piece {
         if (terrain[i].getType().matches("Water")) {
           if (checkX != 0) {
             checkX = waterCheck(checkX, checkY);
+			if (checkX == 0)
+				return false;
           }
           if (checkY != 0) {
             checkY = waterCheck(checkX, checkY);
+			if (checkY == 0)
+				return false;
           }
         }
 
 
         if (terrain[i].getType().matches("Den") && terrain[i].getOwner() ==  this.getOwner()) {
         	return false;
-	}
+	    }
 
       }
     }
@@ -119,16 +122,16 @@ class LionTigerPiece extends Piece {
     int movementX = directionX;
     Tile[] terrain = this.getBoard().getTerrain();
     ArrayList<Piece> pieces = this.getBoard().getPieces();
-    MousePiece mouse1 = null;
-    MousePiece mouse2 = null;
+    Piece mouse1 = null;
+    Piece mouse2 = null;
     //int[][] mousePositions = new int[2][2];
 
     //weirdchamp mouse check method: get the mice from Board
     for (int j = 0; j < pieces.size(); j++) {
-        if (pieces.get(j).getType().equals("Mouse") && pieces.get(j) instanceof MousePiece && mouse1 == null)
-		mouse1 = (MousePiece) pieces.get(j);
-	else if (pieces.get(j).getType().equals("Mouse") && pieces.get(j) instanceof MousePiece)
-		mouse2 = (MousePiece) pieces.get(j);
+        if (pieces.get(j).getType().equals("Mouse") && mouse1 == null)
+		mouse1 = pieces.get(j);
+	else if (pieces.get(j).getType().equals("Mouse"))
+		mouse2 = pieces.get(j);
     }
 
     int[][] mousePositions = {
@@ -146,31 +149,31 @@ class LionTigerPiece extends Piece {
         if (terrain[i].getType().equals("Water")) {
           //checking along the x-axis
           if (movementX != 0 && this.getX() + movementX == terrain[i].getX()) {
-		    //if there is a maus along the way then return 0
-		    if (this.getX() + movementX == mousePositions[0][0] || this.getX() + movementX == mousePositions[1][0])
-	    		return 0;
             movementX += directionX;
             doneChecking = false;
+			if (this.getX() + movementX == mousePositions[0][0] && this.getY() + movementY == mousePositions[0][1])
+			  return 0;
+			if (this.getX() + movementX == mousePositions[1][0] && this.getY() + movementY == mousePositions[1][1])
+			  return 0;
             break;
           }
           //checking along the y-axis
           if (movementY != 0 && this.getY() + movementY == terrain[i].getY()) {
-	    	//if theres mouse return 0
-	    	if (this.getY() + movementY == mousePositions[0][1] || this.getY() + movementY == mousePositions[1][1])
-		    	return 0;
             movementY += directionY;
             doneChecking = false;
+			  if (this.getX() + movementX == mousePositions[0][0] && this.getY() + movementY == mousePositions[0][1])
+			  	return 0;
+			  if (this.getX() + movementX == mousePositions[1][0] && this.getY() + movementY == mousePositions[1][1])
+			  	return 0;
             break;
           }
         }
-      }
+	  }
+	  //if, at any point during this checking shit, a mouse is encountered, return 0
     }
 
-  lastJumpLength = movementX+movementY;
+
   return movementX + movementY;
   }
 
-  public int getLastJumpLength() {
-	  return lastJumpLength;
-  }
 }

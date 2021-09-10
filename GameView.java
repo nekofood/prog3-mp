@@ -112,53 +112,28 @@ class GameView extends JFrame {
 	 * Sets the button color to green when valid direction
 	 * @param btn the button that is a valid direction
 	 */
-	public void showValidDir(JButton btn) {
-		//TODO: this along with hideValidDir() is causing errors for some reason, will come back to later
-		int i = 1;
-		int j = 1;
-		//get surrounding buttons
-    	for (i = 1; i < 7; i++) {
-			for (j = 1; j < 9; j++) {
-				if (gameBoard[i][j] == btn) {
-					break;
-				}
-			}
-			break;
-		}
-		//i and j are the button's y,x
-		if (i + 1 < 7)
+	public void showValidDir(int x, int y) {
+		if (y + 1 < 7)
 			gameBoard[i+1][j].setBackground(Color.green);
-		if (i - 1 >= 0)
+		if (y - 1 >= 0)
 			gameBoard[i-1][j].setBackground(Color.green);
-		if (j + 1 < 9)
+		if (x + 1 < 9)
 			gameBoard[i][j+1].setBackground(Color.green);
-		if (j - 1 >= 0)
+		if (x - 1 >= 0)
 			gameBoard[i][j-1].setBackground(Color.green);
     }
 
 	/**
 	 * Resets the button colors to white
 	 */
-	public void hideValidDir(JButton btn) {
-		int i = 1;
-		int j = 1;
-		//get surrounding buttons
-    	for (i = 1; i < 7; i++) {
-			for (j = 1; j < 9; j++) {
-				if (gameBoard[i][j] == btn) {
-					break;
-				}
-			}
-			break;
-		}
-		//i and j are the button's y,x
-		if (i + 1 < 7)
+	public void hideValidDir(int x, int y) {
+		if (y + 1 < 7)
 			gameBoard[i+1][j].setBackground(Color.white);
-		if (i - 1 >= 0)
+		if (y - 1 >= 0)
 			gameBoard[i-1][j].setBackground(Color.white);
-		if (j + 1 < 9)
+		if (x + 1 < 9)
 			gameBoard[i][j+1].setBackground(Color.white);
-		if (j - 1 >= 0)
+		if (x - 1 >= 0)
 			gameBoard[i][j-1].setBackground(Color.white);
 	}
 

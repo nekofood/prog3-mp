@@ -114,7 +114,7 @@ class GameController {
 						if (spc == null && pc != null && pc.getOwner() == model.getWhoseTurn()) {
 							spc = pc;
 							System.out.println("Piece selected " + spc.toString());
-							//view.showValidDir((JButton)e.getSource());
+							view.showValidDir(j, i);
 							return;
 						}
 						/* if a piece IS selected, time to handle movement! */
@@ -124,7 +124,7 @@ class GameController {
 							//check if the piece is orthogonal to the space just clicked
 							//yeah this sucks
 							if (isMoveValid(spcX, spcY, j+1, 9-(i+2))) {
-								if (model.movePiece(spc, moveToChar((j+1) - spcX, (9-(i+2)) - spcY))) {
+								if (model.movePiece(spc, moveToChar((j+1) - spcX, (7-i) - spcY))) {
 									System.out.println("Movement");
 									model.advanceTurn();
 									view.setPlayerTurninfo(model.getWhoseTurn());
@@ -132,7 +132,7 @@ class GameController {
 								}
 							}
 							System.out.println("Piece unselected ");
-							//view.hideValidDir((JButton)e.getSource());
+							view.hideValidDir(7-spcY, spcX-1);
 							spc = null;
 							return;
 						}
