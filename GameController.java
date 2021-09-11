@@ -109,6 +109,9 @@ class GameController {
 			return 'a';
 	}
 
+	/**
+	 * This listener handles all board clicks, from piece selection/deselection to movement. 
+	 */
 	class BoardListener implements ActionListener {
 		//TODO!!!!!
 		public void actionPerformed(ActionEvent e) {
