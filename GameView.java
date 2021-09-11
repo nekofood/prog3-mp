@@ -131,7 +131,7 @@ class GameView extends JFrame {
 	 * @param y the y of the point
 	 */
 	public void hideValidDir(int x, int y) {
-		System.out.println("hidden " + x + ", " + y);
+		System.out.println("hidden " + y + ", " + x);
 		if (y + 1 < 7)
 			gameBoard[y+1][x].setBackground(Color.white);
 		if (y - 1 >= 0)

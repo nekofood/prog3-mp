@@ -122,13 +122,14 @@ class GameController {
 						if (spc == null && pc != null && pc.getOwner() == model.getWhoseTurn()) {
 							spc = pc;
 							System.out.println("Piece selected " + spc.toString());
-							//view.showValidDir(j, i);
+							view.showValidDir(j, i);
 							return;
 						}
 						/* if a piece IS selected, time to handle movement! */
 						if (spc != null) {
 							int spcX = spc.getX();
 							int spcY = spc.getY();
+							System.out.println(spc.getX() + " " + spc.getY());
 							//check if the piece is orthogonal to the space just clicked
 							//yeah this sucks
 							if (isMoveValid(spcX, spcY, j+1, 7-i)) {
@@ -143,7 +144,7 @@ class GameController {
 								}
 							}
 							System.out.println("Piece unselected ");
-							//view.hideValidDir(7-spcY, spcX-1);
+							view.hideValidDir(spcX-1, 7-spcY);
 							spc = null;
 							return;
 						}
