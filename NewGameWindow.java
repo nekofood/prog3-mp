@@ -2,6 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+/**
+ * This JFrame handles the "new game" window (side selection).
+ */
 class NewGameWindow extends JFrame {
 	JPanel panel;
 	JLabel p1label;

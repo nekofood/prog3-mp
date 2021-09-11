@@ -3,13 +3,18 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.event.*;
-
+/**
+ * This class is a JFrame that handles the game's graphical user interface.
+ */
 class GameView extends JFrame {
 	private JButton[][] gameBoard;
 	private JLabel turn;
 	private ImageIcon[] tileIcons;
 	private ImageIcon[] pieceIcons;
 
+	/**
+	 * This constructor creates a new Game View.
+	 */
 	GameView() {
 		gameBoard = new JButton[7][9];
 		tileIcons = new ImageIcon[5];
@@ -42,7 +47,7 @@ class GameView extends JFrame {
 	}
 
 	/**
-	 * Initializes River, Den and Trap icons
+	 * Initializes River, Den and Trap icons.
 	 */
 	private void initTerrain() {
 		tileIcons[0] = new ImageIcon("img/River.png");
@@ -164,7 +169,7 @@ class GameView extends JFrame {
 	}
 
 	/**
-	 * Enables all the buttons on the board
+	 * Enables all the buttons on the board.
 	 */
 	public void enableAllButtons()
 	{
@@ -176,7 +181,7 @@ class GameView extends JFrame {
 	}
 
 	/**
-	 * Disables all the buttons on the board
+	 * Disables all the buttons on the board.
 	 */
 	public void disableAllButtons()
 	{

@@ -1,8 +1,6 @@
 /**
- * This class represents a single game of Animal Chess.
- *
+ * This class represents the game of Animal Chess and handles all operations related to it.
  */
-
 class Game {
 	private Board board;
 	private Bag bag;

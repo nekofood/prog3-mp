@@ -1,6 +1,6 @@
 import java.util.*;
 /**
-* Represents a Tiger or Lion.
+* Represents a Tiger or Lion. Tigers and lions can jump over the river.
 */
 class LionTigerPiece extends Piece {
   /**

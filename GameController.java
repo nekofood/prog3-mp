@@ -1,11 +1,18 @@
 import java.awt.event.*;
 import javax.swing.*;
-
+/**
+ * This class is a controller that connects the data from the game model to the view GUI.
+ */
 class GameController {
 	private GameView view;
 	private Game model;
 	private Piece spc; //selected piece for movement handling
 
+	/**
+	 * This constructor creates a new controller.
+	 * @param v the game view
+	 * @param g the game model
+	 */
 	GameController(GameView v, Game g) {
 		view = v;
 		model = g;

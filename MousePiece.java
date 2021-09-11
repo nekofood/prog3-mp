@@ -1,5 +1,8 @@
 import java.util.*;
 
+/**
+ * This class represents a Mouse piece. Mice can move onto and out of the river.
+ */
 public class MousePiece extends Piece {
 /**
 	 * This constructor creates a Mouse piece.
