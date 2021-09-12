@@ -110,9 +110,9 @@ class LionTigerPiece extends Piece {
   /**
   * Checks if the piece has a clear path to jump across the water.
   * <p> This function assumes that the tile being moved into is already a water tile.
+  * Movement will be stopped if a mouse is in the way.
   * @param directionX whether the piece is moving east (1) or west (-1)
   * @param directionY whether the piece is moving north (1) or south (-1)
-  * @param terrain the array of terrain tiles
   * @return the amount of water tiles to jump, 0 if the movement is invalid.
   */
   public int waterCheck(int directionX, int directionY) {
@@ -149,22 +149,22 @@ class LionTigerPiece extends Piece {
         if (terrain[i].getType().equals("Water")) {
           //checking along the x-axis
           if (movementX != 0 && this.getX() + movementX == terrain[i].getX()) {
-            movementX += directionX;
-            doneChecking = false;
 			if (this.getX() + movementX == mousePositions[0][0] && this.getY() + movementY == mousePositions[0][1])
 			  return 0;
 			if (this.getX() + movementX == mousePositions[1][0] && this.getY() + movementY == mousePositions[1][1])
 			  return 0;
+            movementX += directionX;
+            doneChecking = false;
             break;
           }
           //checking along the y-axis
           if (movementY != 0 && this.getY() + movementY == terrain[i].getY()) {
-            movementY += directionY;
-            doneChecking = false;
 			  if (this.getX() + movementX == mousePositions[0][0] && this.getY() + movementY == mousePositions[0][1])
 			  	return 0;
 			  if (this.getX() + movementX == mousePositions[1][0] && this.getY() + movementY == mousePositions[1][1])
 			  	return 0;
+            movementY += directionY;
+            doneChecking = false;
             break;
           }
         }

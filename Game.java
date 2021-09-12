@@ -95,8 +95,10 @@ class Game {
 		return piece.movePiece(direction);
 	}
 
+	/**
+	 * Advances the turn counter and passes the turn to the other player.
+	 */
 	public void advanceTurn() {
-		//TODO: this isn't properly passing the turn to the other player?
 		++turn;
 		System.out.println("Turn advanced (now turn " + turn + ")");
 		if (whoseTurn == 1) {
@@ -107,10 +109,20 @@ class Game {
 			whoseTurn = 1;
 	}
 
+	/**
+	 * Draws a piece from the bag.
+	 * @return a piece from the bag
+	 */
 	public Piece drawFromBag() {
 		return bag.drawPiece();
 	}
 
+	/**
+	 * Retrieves the piece at the specified x, y coordinates
+	 * @param x the x
+	 * @param y the y
+	 * @return the piece at x,y, null if there is no piece at given x,y
+	 */
 	public Piece getFromBoard(int x, int y) {
 		return board.getPieceAt(x, y);
 	}
@@ -127,18 +139,34 @@ class Game {
 		return this.board.checkEnd();
 	}
 
+	/**
+	 * Returns whose turn it is
+	 * @return whose turn it is
+	 */
 	public int getWhoseTurn() {
 		return whoseTurn;
 	}
 
+	/**
+	 * Returns the player 1 object.
+	 * @return player 1
+	 */
 	public Player getPlayer1() {
 		return player1;
 	}
 
+	/**
+	 * Returns the player 2 object.
+	 * @return player 2
+	 */
 	public Player getPlayer2() {
 		return player2;
 	}
 
+	/**
+	 * Returns the bag.
+	 * @return bag
+	 */
 	public Bag getBag() {
 		return bag;
 	}

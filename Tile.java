@@ -43,6 +43,7 @@ public class Tile {
 
   /**
   * Modifies the type of this tile.
+  * @param t the type to change to
   */
   public void setType(String t) {
     this.type = t;
@@ -56,10 +57,18 @@ public class Tile {
     return ownedBy;
   }
 
+  /**
+   * Returns the board this piece belongs to.
+   * @return the Board this piece is in
+   */
   public Board getBoard() {
     return board;
   }
 
+  /**
+   * Returns the index of its icon in either icon array.
+   * @return the icon index
+   */
   public int getIconIndex() {
 	  return iconIndex;
   }

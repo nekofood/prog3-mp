@@ -1,4 +1,7 @@
-
+/**
+ * Animal Chess
+ * @author Dale Gregorio, Nath Binalla S11
+ */
 class Main {
 	public static void main(String[] args) {
 			Game m = new Game();

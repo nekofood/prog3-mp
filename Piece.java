@@ -28,8 +28,6 @@ public class Piece extends Tile {
   /**
   * Moves the piece in one direction.
   * @param  direction The desired direction to move in (N/S/E/W).
-  * @param  pieces  The array of all game pieces in play.
-  * @param  terrain The array of all terrain.
   * @return false if movement fails, true otherwise.
   */
   public boolean movePiece(char direction) {

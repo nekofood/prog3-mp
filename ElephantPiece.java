@@ -1,3 +1,6 @@
+/**
+ * Represents an Elephant piece.
+ */
 public class ElephantPiece extends Piece {
 	/**
 	 * This constructor creates an Elephant piece.
