@@ -95,7 +95,7 @@ class GameController {
 
 	/**
 	 * Converts x,y movement to NSEW chars.
-	 * Please input within the range of -1 <= x <= 1.
+	 * Please input within the range of -1 to 1.
 	 * @param X -1 or 1 (W/E)
 	 * @param Y -1 or 1 (S/N)
 	 * @return the compass direction to move in; 'a' if invalid
@@ -113,7 +113,7 @@ class GameController {
 	}
 
 	/**
-	 * This listener handles all board clicks, from piece selection/deselection to movement. 
+	 * This listener handles all board clicks, from piece selection/deselection to movement.
 	 */
 	class BoardListener implements ActionListener {
 		//TODO!!!!!
