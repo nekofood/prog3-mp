@@ -49,7 +49,10 @@ class GameController {
 
 		//halt code while waiting for user input lmao
 		while (ngView.getSelectedSide() == 0) {
-				System.out.print(ngView.getSelectedSide()); //figure out how to replace this without flooding the console
+			//i was experimenting and this worked, idk why
+			int var = ngView.getSelectedSide();
+			String var1 = String.valueOf(var);
+			//System.out.print(ngView.getSelectedSide()); //figure out how to replace this without flooding the console
 		}
 
 		System.out.println("[Controller] got selected side " + ngView.getSelectedSide());
