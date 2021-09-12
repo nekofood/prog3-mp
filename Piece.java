@@ -145,7 +145,6 @@ public class Piece extends Tile {
 
   /**
   * Gets the tile that the piece is currently standing on.
-  * @param tiles the tiles array
   * @return the tile the piece is standing on, null if the tile is blank.
   */
   public Tile getTileUnder() {
